@@ -40,7 +40,7 @@ export function Reveal({
   className = "",
 }: {
   children: string;
-  as?: keyof JSX.IntrinsicElements;
+  as?: keyof React.JSX.IntrinsicElements;
   delay?: number;
   className?: string;
 }) {
