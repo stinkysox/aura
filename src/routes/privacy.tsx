@@ -11,7 +11,7 @@ export function Legal({ title }: { title: string }) {
   return (
     <div className="pt-40">
       <Section eyebrow="Considered, in writing" num={title}>
-        <h1 className="display-xl"><Reveal>{title}.</Reveal></h1>
+        <h1 className="display-xl"><Reveal>{`${title}.`}</Reveal></h1>
       </Section>
       <section className="px-6 md:px-12 pb-40">
         <div className="mx-auto max-w-2xl space-y-6 text-foreground/80">
