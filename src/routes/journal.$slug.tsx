@@ -1,0 +1,62 @@
+import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { Section } from "@/components/Section";
+import { Plate } from "@/components/Placeholder";
+import { Reveal, FadeIn } from "@/lib/motion";
+import { journal } from "@/content/site";
+
+export const Route = createFileRoute("/journal/$slug")({
+  loader: ({ params }) => {
+    const j = journal.find((x) => x.slug === params.slug);
+    if (!j) throw notFound();
+    return j;
+  },
+  head: ({ loaderData }) => ({
+    meta: [
+      { title: `${loaderData?.title ?? "Journal"} — Aesthesia` },
+      { name: "description", content: loaderData?.excerpt ?? "" },
+      { property: "og:title", content: `${loaderData?.title ?? "Journal"} — Aesthesia` },
+      { property: "og:description", content: loaderData?.excerpt ?? "" },
+    ],
+  }),
+  notFoundComponent: () => (
+    <div className="flex min-h-screen items-center justify-center">
+      <Link to="/journal" className="font-serif text-3xl underline">Return to journal</Link>
+    </div>
+  ),
+  errorComponent: ({ error }) => (
+    <div className="flex min-h-screen items-center justify-center"><p>{error.message}</p></div>
+  ),
+  component: Entry,
+});
+
+function Entry() {
+  const j = Route.useLoaderData();
+  return (
+    <article className="pt-40">
+      <Section eyebrow={`${j.date} · ${j.read}`} num="Journal">
+        <h1 className="display-xl max-w-6xl"><Reveal>{j.title}</Reveal></h1>
+      </Section>
+      <section className="px-6 md:px-12">
+        <FadeIn className="mx-auto max-w-[1700px]">
+          <Plate tone="bone" ratio="21/9" label={j.title} />
+        </FadeIn>
+      </section>
+      <section className="px-6 py-32 md:px-12">
+        <div className="mx-auto max-w-2xl space-y-8">
+          <p className="font-serif text-2xl italic leading-snug text-graphite">{j.excerpt}</p>
+          {[
+            "There is, in modern dermatology, a temptation toward the maximal — toward the catalogue of every device, the layered protocol, the busy face.",
+            "We have come to think of this as a kind of noise. Skin, like architecture, asks for editing. The question is rarely what to add. It is almost always what to leave alone.",
+            "What follows is a short defence of restraint, written for a season — winter — when the temptation to over-correct is highest, and the reward for patience is greatest.",
+            "Begin with one thing. Hold it for six weeks. Read the surface again. Then, only then, consider the second.",
+          ].map((p, i) => (
+            <p key={i} className="text-lg leading-relaxed text-foreground/85">{p}</p>
+          ))}
+        </div>
+      </section>
+      <Section>
+        <Link to="/journal" className="text-[12px] uppercase tracking-[0.22em] border-b border-ink pb-1">← Return to journal</Link>
+      </Section>
+    </article>
+  );
+}
