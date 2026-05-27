@@ -1,6 +1,11 @@
 {
   "version": 2,
   "cleanUrls": true,
+  "build": {
+    "env": {
+      "DIST_DIR": "dist" 
+    }
+  },
   "routes": [
     {
       "src": "/_assets/(.*)",
