@@ -12,9 +12,9 @@ export const Route = createFileRoute("/treatments/$slug")({
   },
   head: ({ loaderData }) => ({
     meta: [
-      { title: `${loaderData?.name ?? "Treatment"} — Aesthesia` },
+      { title: `${loaderData?.name ?? "Treatment"} — AURA Skin and Hair Clinic` },
       { name: "description", content: loaderData?.description ?? "" },
-      { property: "og:title", content: `${loaderData?.name ?? "Treatment"} — Aesthesia` },
+      { property: "og:title", content: `${loaderData?.name ?? "Treatment"} — AURA Skin and Hair Clinic` },
       { property: "og:description", content: loaderData?.description ?? "" },
     ],
   }),

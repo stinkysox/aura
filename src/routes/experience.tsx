@@ -6,9 +6,9 @@ import { Reveal, FadeIn } from "@/lib/motion";
 export const Route = createFileRoute("/experience")({
   head: () => ({
     meta: [
-      { title: "Patient Experience — Aesthesia" },
+      { title: "Patient Experience — AURA Skin and Hair Clinic" },
       { name: "description", content: "From the door to the after-tea." },
-      { property: "og:title", content: "Patient Experience — Aesthesia" },
+      { property: "og:title", content: "Patient Experience — AURA Skin and Hair Clinic" },
       { property: "og:description", content: "A choreographed visit." },
     ],
   }),

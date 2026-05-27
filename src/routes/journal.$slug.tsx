@@ -12,9 +12,9 @@ export const Route = createFileRoute("/journal/$slug")({
   },
   head: ({ loaderData }) => ({
     meta: [
-      { title: `${loaderData?.title ?? "Journal"} — Aesthesia` },
+      { title: `${loaderData?.title ?? "Journal"} — AURA Skin and Hair Clinic` },
       { name: "description", content: loaderData?.excerpt ?? "" },
-      { property: "og:title", content: `${loaderData?.title ?? "Journal"} — Aesthesia` },
+      { property: "og:title", content: `${loaderData?.title ?? "Journal"} — AURA Skin and Hair Clinic` },
       { property: "og:description", content: loaderData?.excerpt ?? "" },
     ],
   }),

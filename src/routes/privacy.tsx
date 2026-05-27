@@ -3,7 +3,7 @@ import { Section } from "@/components/Section";
 import { Reveal } from "@/lib/motion";
 
 export const Route = createFileRoute("/privacy")({
-  head: () => ({ meta: [{ title: "Privacy — Aesthesia" }, { name: "description", content: "Privacy policy." }] }),
+  head: () => ({ meta: [{ title: "Privacy — AURA Skin and Hair Clinic" }, { name: "description", content: "Privacy policy." }] }),
   component: () => <Legal title="Privacy" />,
 });
 
@@ -17,7 +17,7 @@ export function Legal({ title }: { title: string }) {
         <div className="mx-auto max-w-2xl space-y-6 text-foreground/80">
           {Array.from({ length: 6 }).map((_, i) => (
             <p key={i} className="text-base leading-relaxed">
-              At Aesthesia we treat patient information the way we treat the patient — with restraint,
+              At AURA Skin and Hair Clinic we treat patient information the way we treat the patient — with restraint,
               precision and an instinct toward the minimum necessary. This document outlines the small
               number of ways we collect, hold, and consider information shared with us.
             </p>

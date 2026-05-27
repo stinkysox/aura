@@ -6,9 +6,9 @@ import { Reveal, FadeIn } from "@/lib/motion";
 export const Route = createFileRoute("/gallery")({
   head: () => ({
     meta: [
-      { title: "Gallery — Aesthesia" },
+      { title: "Gallery — AURA Skin and Hair Clinic" },
       { name: "description", content: "A private archive of considered results." },
-      { property: "og:title", content: "Gallery — Aesthesia" },
+      { property: "og:title", content: "Gallery — AURA Skin and Hair Clinic" },
       { property: "og:description", content: "Before & after, viewed quietly." },
     ],
   }),
@@ -17,7 +17,7 @@ export const Route = createFileRoute("/gallery")({
 
 const items = Array.from({ length: 9 }).map((_, i) => ({
   i, tone: (["bone", "stone", "skin", "graphite"] as const)[i % 4],
-  label: ["Luminance", "Atelier Lift", "Obsidian", "Veil", "Ember", "Horizon"][i % 6],
+  label: ["Luminance", "Clinic Lift", "Obsidian", "Veil", "Ember", "Horizon"][i % 6],
 }));
 
 function Gallery() {

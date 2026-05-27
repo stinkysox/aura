@@ -7,10 +7,18 @@ import { site } from "@/content/site";
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "The Atelier — Aesthesia" },
-      { name: "description", content: "A private dermatology atelier in Lutyens' Delhi. Founded MMXIX." },
-      { property: "og:title", content: "The Atelier — Aesthesia" },
-      { property: "og:description", content: "Founded on restraint, light and the long view." },
+      { title: "The Clinic — AURA Skin and Hair Clinic" },
+      {
+        name: "description",
+        content:
+          "A holistic center for skin and hair in Udaipur. Inclusive care for medical and aesthetic concerns.",
+      },
+      { property: "og:title", content: "The Clinic — AURA Skin and Hair Clinic" },
+      {
+        property: "og:description",
+        content:
+          "AURA Skin and Hair Clinic offers considered, holistic solutions for skin and hair health.",
+      },
     ],
   }),
   component: About,
@@ -21,19 +29,22 @@ function About() {
     <div className="pt-40">
       <Section eyebrow="Manifesto" num="N° 00">
         <h1 className="display-xl max-w-6xl">
-          <Reveal>A clinic the size of a quiet room.</Reveal>
+          <Reveal>A holistic center for skin and hair.</Reveal>
         </h1>
       </Section>
 
       <section className="px-6 md:px-12">
         <div className="mx-auto grid max-w-[1700px] grid-cols-12 gap-6 md:gap-10">
-          <FadeIn className="col-span-12 md:col-span-7"><Plate tone="bone" ratio="16 / 10" label="Atelier · Drawing Room" /></FadeIn>
+          <FadeIn className="col-span-12 md:col-span-7">
+            <Plate tone="bone" ratio="16 / 10" label="AURA Skin and Hair Clinic" />
+          </FadeIn>
           <div className="col-span-12 mt-12 md:col-span-4 md:col-start-9 md:mt-24">
-            <p className="eyebrow mb-6">Founded MMXIX</p>
+            <p className="eyebrow mb-6">Founded in Udaipur</p>
             <p className="font-serif text-2xl italic leading-snug">
-              "We wanted a place that felt the way good light feels — undemanding, exact."
+              "Our work begins with what the patient brings, not with what the clinic offers. Every
+              plan is built around skin, hair and context."
             </p>
-            <p className="mt-8 text-sm text-graphite">— Dr. Aanya Kohli, Founder</p>
+            <p className="mt-8 text-sm text-graphite">— Dr. Nidheesh Agarwal</p>
           </div>
         </div>
       </section>
@@ -45,9 +56,18 @@ function About() {
           </h2>
           <div className="col-span-12 grid grid-cols-1 gap-12 md:col-span-6 md:col-start-7 md:grid-cols-1">
             {[
-              { t: "Restraint", b: "We will recommend less than we are asked for. The first answer is almost always: do less." },
-              { t: "Architecture", b: "Skin is structural. We map and we draw before we treat." },
-              { t: "Time", b: "Every protocol is calibrated to the season, the age and the patience of the patient." },
+              {
+                t: "Holism",
+                b: "Skin and hair are part of the same story. We look for the root, the rhythm and the system behind every condition.",
+              },
+              {
+                t: "Clarity",
+                b: "Diagnosis comes before treatment. We describe the concern clearly and then design care that is measured and kind.",
+              },
+              {
+                t: "Care",
+                b: "Affordable, respectful and sustainable care is not optional. It is the only way we can honour the trust of our patients.",
+              },
             ].map((x, i) => (
               <FadeIn key={x.t} delay={i * 0.08}>
                 <div className="border-t border-border pt-6">
@@ -65,11 +85,16 @@ function About() {
 
       <Section eyebrow="The Building" num="N° 02">
         <div className="grid grid-cols-12 gap-6 md:gap-10">
-          <FadeIn className="col-span-12 md:col-span-4"><Plate tone="stone" ratio="3/4" label="Vestibule" /></FadeIn>
-          <FadeIn delay={0.1} className="col-span-12 md:col-span-5 md:mt-24"><Plate tone="bone" ratio="4/5" label="Treatment · 02" /></FadeIn>
+          <FadeIn className="col-span-12 md:col-span-4">
+            <Plate tone="stone" ratio="3/4" label="Reception" />
+          </FadeIn>
+          <FadeIn delay={0.1} className="col-span-12 md:col-span-5 md:mt-24">
+            <Plate tone="bone" ratio="4/5" label="Treatment Room" />
+          </FadeIn>
           <div className="col-span-12 md:col-span-3 md:mt-40">
             <p className="font-serif text-xl italic leading-snug">
-              A late-modern bungalow on Amrita Shergill Marg. Restored quietly, in linen, lime and oak.
+              AURA Skin and Hair Clinic sits in Sardarpura, Udaipur. It is quiet, practical and
+              built around the needs of skin and hair care.
             </p>
             <p className="mt-6 text-sm text-graphite">{site.address}</p>
           </div>

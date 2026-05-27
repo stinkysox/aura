@@ -7,9 +7,9 @@ import { technology } from "@/content/site";
 export const Route = createFileRoute("/technology")({
   head: () => ({
     meta: [
-      { title: "Technology — Aesthesia" },
+      { title: "Technology — AURA Skin and Hair Clinic" },
       { name: "description", content: "Considered instruments, used least." },
-      { property: "og:title", content: "Technology — Aesthesia" },
+      { property: "og:title", content: "Technology — AURA Skin and Hair Clinic" },
       { property: "og:description", content: "Picosecond, ultrasound, radiofrequency." },
     ],
   }),

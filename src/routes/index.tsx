@@ -11,10 +11,18 @@ import { philosophy, technology, testimonials, doctors } from "@/content/site";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Aesthesia — The Skin Atelier · New Delhi" },
-      { name: "description", content: "A private dermatology atelier. Cinematic, considered, exact." },
-      { property: "og:title", content: "Aesthesia — The Skin Atelier" },
-      { property: "og:description", content: "A private dermatology atelier in New Delhi." },
+      { title: "AURA Skin and Hair Clinic — A holistic skin and hair center · Udaipur" },
+      {
+        name: "description",
+        content:
+          "A holistic center for skin and hair in Udaipur. Thoughtful care, medical and aesthetic.",
+      },
+      { property: "og:title", content: "AURA Skin and Hair Clinic — Holistic Skin & Hair Care" },
+      {
+        property: "og:description",
+        content:
+          "AURA Skin and Hair Clinic offers thoughtful, considered skin and hair care in Udaipur.",
+      },
     ],
   }),
   component: Home,
@@ -37,8 +45,11 @@ function Home() {
           </div>
           <FadeIn className="md:col-span-4 md:col-start-9 md:pt-6">
             <p className="body-lg">{philosophy.body}</p>
-            <Link to="/about" className="mt-10 inline-block border-b border-ink pb-1 text-[12px] uppercase tracking-[0.22em] hover:opacity-60">
-              The atelier →
+            <Link
+              to="/about"
+              className="mt-10 inline-block border-b border-accent pb-1 text-[12px] uppercase tracking-[0.22em] text-accent hover:text-accent-foreground hover:opacity-80"
+            >
+              The clinic →
             </Link>
           </FadeIn>
         </div>
@@ -58,7 +69,7 @@ function Home() {
         <div className="grid grid-cols-1 gap-12 md:grid-cols-12">
           <div className="md:col-span-4">
             <h2 className="display-md">
-              <Reveal>Four specialists. One quiet philosophy.</Reveal>
+              <Reveal>One specialist. One quiet philosophy.</Reveal>
             </h2>
           </div>
           <div className="md:col-span-7 md:col-start-6">
@@ -74,7 +85,10 @@ function Home() {
                 </FadeIn>
               ))}
             </ul>
-            <Link to="/doctors" className="mt-8 inline-block border-b border-ink pb-1 text-[12px] uppercase tracking-[0.22em] hover:opacity-60">
+            <Link
+              to="/doctors"
+              className="mt-8 inline-block border-b border-ink pb-1 text-[12px] uppercase tracking-[0.22em] hover:opacity-60"
+            >
               The Specialists →
             </Link>
           </div>
@@ -86,7 +100,9 @@ function Home() {
         <div className="space-y-32 md:space-y-48">
           {testimonials.map((t, i) => (
             <FadeIn key={i} delay={0.1} y={40}>
-              <blockquote className={`mx-auto max-w-4xl ${i % 2 ? "md:ml-auto md:mr-12 md:text-right" : "md:ml-12"}`}>
+              <blockquote
+                className={`mx-auto max-w-4xl ${i % 2 ? "md:ml-auto md:mr-12 md:text-right" : "md:ml-12"}`}
+              >
                 <p className="font-serif text-3xl leading-snug md:text-5xl">"{t.quote}"</p>
                 <footer className="mt-8 text-xs uppercase tracking-[0.22em] text-graphite">
                   {t.author} · {t.note}
@@ -104,8 +120,8 @@ function Home() {
             <Reveal>The first session is a conversation.</Reveal>
           </h2>
           <p className="body-lg mx-auto mt-12 max-w-xl">
-            Ninety minutes, in private, with a senior specialist. No prescription is written
-            until we have read the skin slowly.
+            Ninety minutes, in private, with a senior specialist. No prescription is written until
+            we have read the skin slowly.
           </p>
           <div className="mt-16">
             <HeroCTA />
@@ -134,7 +150,10 @@ function ParallaxDiptych() {
             "The dermis remembers what the surface cannot say."
           </p>
         </div>
-        <motion.div style={{ y: y2 }} className="col-span-12 mt-12 md:col-span-4 md:col-start-9 md:mt-32">
+        <motion.div
+          style={{ y: y2 }}
+          className="col-span-12 mt-12 md:col-span-4 md:col-start-9 md:mt-32"
+        >
           <Plate tone="stone" ratio="4 / 5" label="Material · 02" />
         </motion.div>
       </div>
@@ -148,8 +167,12 @@ function TechnologySection() {
       <div className="px-6 py-32 md:px-12 md:py-48">
         <div className="mx-auto max-w-[1700px]">
           <div className="mb-20 flex items-baseline justify-between">
-            <span className="eyebrow" style={{ color: "oklch(0.7 0.01 80)" }}>N° 03 · Instruments</span>
-            <span className="eyebrow" style={{ color: "oklch(0.7 0.01 80)" }}>{technology.length} platforms</span>
+            <span className="eyebrow" style={{ color: "oklch(0.7 0.01 80)" }}>
+              N° 03 · Instruments
+            </span>
+            <span className="eyebrow" style={{ color: "oklch(0.7 0.01 80)" }}>
+              {technology.length} platforms
+            </span>
           </div>
           <h2 className="display-lg max-w-4xl">
             <Reveal>The most considered instruments, used least.</Reveal>
@@ -164,9 +187,13 @@ function TechnologySection() {
                   <li className="border-b py-8" style={{ borderColor: "oklch(1 0 0 / 0.12)" }}>
                     <div className="flex items-baseline justify-between">
                       <span className="font-serif text-2xl">{t.name}</span>
-                      <span className="text-xs" style={{ color: "oklch(0.7 0.01 80)" }}>0{i + 1}</span>
+                      <span className="text-xs" style={{ color: "oklch(0.7 0.01 80)" }}>
+                        0{i + 1}
+                      </span>
                     </div>
-                    <p className="mt-3 max-w-md text-sm" style={{ color: "oklch(0.78 0.01 80)" }}>{t.note}</p>
+                    <p className="mt-3 max-w-md text-sm" style={{ color: "oklch(0.78 0.01 80)" }}>
+                      {t.note}
+                    </p>
                   </li>
                 </FadeIn>
               ))}

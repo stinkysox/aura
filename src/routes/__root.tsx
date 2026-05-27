@@ -74,10 +74,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Aesthesia — The Skin Atelier · New Delhi" },
-      { name: "description", content: "A private dermatology atelier in Lutyens' Delhi. Cinematic, considered, exact." },
-      { property: "og:title", content: "Aesthesia — The Skin Atelier" },
-      { property: "og:description", content: "A private dermatology atelier in New Delhi." },
+      { title: "AURA Skin and Hair Clinic — A holistic center for skin and hair · Udaipur" },
+      {
+        name: "description",
+        content:
+          "A holistic skin and hair clinic in Udaipur. Thoughtful care for medical and aesthetic concerns.",
+      },
+      { property: "og:title", content: "AURA Skin and Hair Clinic — Skin & Hair Care" },
+      { property: "og:description", content: "A holistic center for skin and hair in Udaipur." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],

@@ -1,19 +1,19 @@
 // Centralized content. Edit here to update the entire site.
 
 export const site = {
-  name: "Aesthesia",
-  tagline: "The Skin Atelier",
-  city: "New Delhi",
-  address: "12, Amrita Shergill Marg · Lutyens' Delhi · 110003",
-  phone: "+91 11 4000 0000",
-  email: "atelier@aesthesia.in",
-  hours: "Tuesday — Saturday · 10:00 — 19:00",
+  name: "AURA Skin and Hair Clinic",
+  tagline: "A holistic center for your skin and hair problems",
+  city: "Udaipur",
+  address: "221, Sardarpura, Hanuman Mandir wali gali, Udaipur",
+  phone: "+91 97855-00336",
+  email: "auraskinandhairclinic@gmail.com",
+  hours: "By appointment",
 };
 
 export const nav = [
-  { label: "Atelier", to: "/about" },
+  { label: "Clinic", to: "/about" },
   { label: "Treatments", to: "/treatments" },
-  { label: "Specialists", to: "/doctors" },
+  { label: "Specialist", to: "/doctors" },
   { label: "Concerns", to: "/concerns" },
   { label: "Technology", to: "/technology" },
   { label: "Gallery", to: "/gallery" },
@@ -24,8 +24,8 @@ export const nav = [
 
 export const philosophy = {
   eyebrow: "Philosophy",
-  title: "Skin, considered as architecture.",
-  body: "We approach the surface of the body the way an architect studies light — with patience, precision, and reverence for the material. Every protocol at Aesthesia is composed, never prescribed.",
+  title: "Skin and hair, together as one system.",
+  body: "We treat the surface of the body as an integrated expression of health. Every intervention at AURA begins with a diagnosis, a dialogue and a commitment to holistic, affordable care.",
 };
 
 export type Treatment = {
@@ -39,31 +39,94 @@ export type Treatment = {
 };
 
 export const treatments: Treatment[] = [
-  { slug: "luminance", number: "01", name: "Luminance", family: "Resurfacing", duration: "75 min",
-    description: "A medical-grade resurfacing protocol composed of layered acids and cold-light therapy, calibrated to the season and the skin.",
-    poetry: "The slow return of light beneath the surface." },
-  { slug: "atelier-lift", number: "02", name: "Atelier Lift", family: "Architectural", duration: "120 min",
-    description: "Ultrasound-guided collagen architecture. Non-surgical contouring drawn along the natural lines of the face.",
-    poetry: "Structure, redrawn with quiet intention." },
-  { slug: "obsidian", number: "03", name: "Obsidian", family: "Pigment", duration: "90 min",
-    description: "A pigment-correcting sequence pairing picosecond laser with a topical biome-restorative for deep tonal clarity.",
-    poetry: "An even field. A clean canvas. Nothing more." },
-  { slug: "veil", number: "04", name: "Veil", family: "Hydration", duration: "60 min",
-    description: "Polynucleotide infusion and lymphatic sculpting — the deepest hydration the dermis can hold.",
-    poetry: "Water, returned to its rightful chamber." },
-  { slug: "ember", number: "05", name: "Ember", family: "Acne & Inflammation", duration: "75 min",
-    description: "A measured anti-inflammatory protocol using LED, blue-light and clinical extractions for sensitised skin.",
-    poetry: "Heat, drawn out, leaves the skin still." },
-  { slug: "horizon", number: "06", name: "Horizon", family: "Longevity", duration: "150 min",
-    description: "An annual longevity composition: exosomes, regenerative peptides and mesotherapy delivered as a single sitting.",
-    poetry: "A long view, written into the dermis." },
+  {
+    slug: "clinical-dermatology",
+    number: "01",
+    name: "Clinical Dermatology",
+    family: "Medical dermatology",
+    duration: "Variable",
+    description:
+      "Care for fungal infections, vitiligo, pigmentation, psoriasis, eczema, acne, hives and other medical skin concerns.",
+    poetry: "A systematic response to what the skin is asking for.",
+  },
+  {
+    slug: "hair-treatments",
+    number: "02",
+    name: "Hair Treatments",
+    family: "Scalp and growth",
+    duration: "Variable",
+    description:
+      "Programs for hair fall, dandruff, brittle hair, alopecia, PRP and scalp health in women and men.",
+    poetry: "Strength from root to strand.",
+  },
+  {
+    slug: "hair-transplantation",
+    number: "03",
+    name: "Hair Transplantation",
+    family: "Restoration",
+    duration: "Variable",
+    description:
+      "Restoration for scalp baldness, beard and moustache, eyebrows and sparse facial hair with precision grafting.",
+    poetry: "Density returned with subtle design.",
+  },
+  {
+    slug: "cosmetology",
+    number: "04",
+    name: "Cosmetology",
+    family: "Aesthetic dermatology",
+    duration: "Variable",
+    description:
+      "Anti-ageing, chemical peels, laser hair removal, pigmentation treatments, microdermabrasion, Botox, fillers and skin tightening.",
+    poetry: "Beauty that feels honest and intact.",
+  },
+  {
+    slug: "skin-surgeries",
+    number: "05",
+    name: "Skin Surgeries",
+    family: "Minor surgical care",
+    duration: "Variable",
+    description:
+      "Cryotherapy, wart removal, skin tag and corn removal, acne scar surgery and vitiligo procedures.",
+    poetry: "Precision surgery with a careful hand.",
+  },
+  {
+    slug: "pediatric-dermatology",
+    number: "06",
+    name: "Children's Dermatology",
+    family: "Pediatric skin care",
+    duration: "Variable",
+    description:
+      "Gentle care for white spots, rashes, diaper dermatitis, birthmarks, infections and molluscum in children.",
+    poetry: "Comfort for the smallest skin.",
+  },
+  {
+    slug: "systemic-dermatology",
+    number: "07",
+    name: "Skin & Systemic Health",
+    family: "Integrated diagnosis",
+    duration: "Variable",
+    description:
+      "Dermatology for skin concerns linked to pregnancy, diabetes, thyroid, kidney, digestive and cancer-related conditions.",
+    poetry: "The skin as a mirror of the whole body.",
+  },
+  {
+    slug: "genital-dermatology",
+    number: "08",
+    name: "Genital Dermatology",
+    family: "Intimate care",
+    duration: "Variable",
+    description:
+      "Care for premature ejaculation, erectile dysfunction, genital ulcers, STDs and other intimate dermatological concerns.",
+    poetry: "Private concerns treated with respect.",
+  },
 ];
 
 export const doctors = [
-  { name: "Dr. Aanya Kohli", role: "Founder · Dermatology", bio: "Trained at AIIMS and the Sorbonne. Aanya founded Aesthesia after a decade of editorial dermatology in Paris and Delhi." },
-  { name: "Dr. Ishaan Verma", role: "Aesthetic Surgery", bio: "A measured hand and a sculptor's eye. Ishaan leads the clinic's architectural protocols." },
-  { name: "Dr. Meera Raghavan", role: "Cellular Medicine", bio: "Stanford-trained. Meera oversees longevity, exosome and regenerative therapies." },
-  { name: "Dr. Rohan Kapoor", role: "Laser Sciences", bio: "A specialist in pigment, scarring and the physics of light on Indian skin." },
+  {
+    name: "Dr. Nidheesh Agarwal",
+    role: "M.B.B.S., M.D. (Dermatology) · Dermatologist · Cosmetologist · Hair Transplant Surgeon",
+    bio: "Dr. Nidheesh Agarwal is a dermatologist, cosmetologist and hair transplant surgeon based in Udaipur. He completed his M.B.B.S. and M.D. in Dermatology from RNT Medical College, Udaipur. During his post-graduation he presented his research on chicken pox scars at the 2013 World Congress of Cosmetic Dermatology in Greece and received the Global Education Award from the International Society of Dermatology in 2014. After serving as Assistant Professor at Geetanjali Medical College for four years, he founded AURA Skin and Hair Clinic to provide holistic, affordable solutions for skin and hair concerns.",
+  },
 ];
 
 export const concerns = [
@@ -76,16 +139,52 @@ export const concerns = [
 ];
 
 export const journal = [
-  { slug: "the-quiet-science", title: "The Quiet Science of Doing Less", date: "April 2026", read: "8 min", excerpt: "On restraint as the most modern form of dermatology." },
-  { slug: "light-as-medicine", title: "Light, as Medicine", date: "March 2026", read: "6 min", excerpt: "A short essay on photons, pigment, and the Indian dermis." },
-  { slug: "the-architecture-of-a-face", title: "The Architecture of a Face", date: "February 2026", read: "11 min", excerpt: "How we map structure before we touch a single millimetre of skin." },
-  { slug: "winter-protocols", title: "Notes on a Winter Protocol", date: "January 2026", read: "5 min", excerpt: "Seasonal calibration and the discipline of the cold months." },
+  {
+    slug: "the-quiet-science",
+    title: "The Quiet Science of Doing Less",
+    date: "April 2026",
+    read: "8 min",
+    excerpt: "On restraint as the most modern form of dermatology.",
+  },
+  {
+    slug: "light-as-medicine",
+    title: "Light, as Medicine",
+    date: "March 2026",
+    read: "6 min",
+    excerpt: "A short essay on photons, pigment, and the Indian dermis.",
+  },
+  {
+    slug: "the-architecture-of-a-face",
+    title: "The Architecture of a Face",
+    date: "February 2026",
+    read: "11 min",
+    excerpt: "How we map structure before we touch a single millimetre of skin.",
+  },
+  {
+    slug: "winter-protocols",
+    title: "Notes on a Winter Protocol",
+    date: "January 2026",
+    read: "5 min",
+    excerpt: "Seasonal calibration and the discipline of the cold months.",
+  },
 ];
 
 export const testimonials = [
-  { quote: "There is a stillness here I have not encountered in a clinic before.", author: "K. M.", note: "Patient since 2022" },
-  { quote: "They corrected what a decade of work in other cities had not. Quietly.", author: "S. R.", note: "Editor, Mumbai" },
-  { quote: "It feels less like medicine and more like being read carefully.", author: "A. V.", note: "Architect" },
+  {
+    quote: "There is a stillness here I have not encountered in a clinic before.",
+    author: "K. M.",
+    note: "Patient since 2022",
+  },
+  {
+    quote: "They corrected what a decade of work in other cities had not. Quietly.",
+    author: "S. R.",
+    note: "Editor, Mumbai",
+  },
+  {
+    quote: "It feels less like medicine and more like being read carefully.",
+    author: "A. V.",
+    note: "Architect",
+  },
 ];
 
 export const technology = [
@@ -96,8 +195,20 @@ export const technology = [
 ];
 
 export const faqs = [
-  { q: "How does a first consultation unfold?", a: "Ninety minutes in private. A full diagnostic, a written protocol, and a tea. Nothing is prescribed without consideration." },
-  { q: "Do you accept walk-ins?", a: "We do not. The atelier is built around appointment, silence and time." },
-  { q: "Is the clinic suitable for sensitive skin?", a: "Particularly so. Half of our protocols are calibrated for reactive and post-procedural skin." },
-  { q: "Do you publish before-and-after imagery?", a: "Only with consent, only in our private gallery, and never as marketing." },
+  {
+    q: "How does a first consultation unfold?",
+    a: "Ninety minutes in private. A full diagnostic, a written protocol, and a tea. Nothing is prescribed without consideration.",
+  },
+  {
+    q: "Do you accept walk-ins?",
+    a: "We do not. The clinic is built around appointment, silence and time.",
+  },
+  {
+    q: "Is the clinic suitable for sensitive skin?",
+    a: "Particularly so. Half of our protocols are calibrated for reactive and post-procedural skin.",
+  },
+  {
+    q: "Do you publish before-and-after imagery?",
+    a: "Only with consent, only in our private gallery, and never as marketing.",
+  },
 ];

@@ -1,17 +1,20 @@
 import { useEffect, useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Link } from "@tanstack/react-router";
-import { gsap, ScrollTrigger } from "@/lib/motion";
+import { gsap } from "@/lib/motion";
 
 /**
  * Cinematic hero with pinned scroll choreography.
- * - Liquid chrome orb (pure CSS, GPU)
- * - Editorial typography reveal
- * - Slow camera-push effect via transform
+ * Separates GSAP (idle) and Framer (scroll) to avoid transform conflicts.
  */
 export function CinematicHero() {
   const root = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({ target: root, offset: ["start start", "end start"] });
+
+  // 1. Framer Motion handles the Scroll-driven "Camera" movement
+  const { scrollYProgress } = useScroll({
+    target: root,
+    offset: ["start start", "end start"],
+  });
 
   const orbScale = useTransform(scrollYProgress, [0, 1], [1, 1.45]);
   const orbY = useTransform(scrollYProgress, [0, 1], [0, -120]);
@@ -22,70 +25,92 @@ export function CinematicHero() {
   useEffect(() => {
     const el = root.current;
     if (!el) return;
+
+    // 2. GSAP handles the "Idle" floating animation on a nested child
     const ctx = gsap.context(() => {
-      gsap.to(".orb-float", {
-        y: -18,
-        duration: 6,
+      gsap.to(".orb-float-layer", {
+        y: -25,
+        duration: 5,
         ease: "sine.inOut",
         yoyo: true,
         repeat: -1,
       });
     }, el);
-    return () => { ctx.revert(); ScrollTrigger.refresh(); };
+
+    return () => ctx.revert();
   }, []);
 
   return (
-    <section ref={root} className="relative h-[150vh]">
+    <section ref={root} className="relative h-[150vh] bg-background">
       <div className="sticky top-0 flex h-screen w-full items-center overflow-hidden">
-        {/* atmospheric backdrop */}
+        {/* Atmospheric backdrop */}
         <div
-          className="absolute inset-0"
+          className="absolute inset-0 z-0"
           style={{
             background:
               "radial-gradient(60% 80% at 70% 40%, oklch(0.96 0.012 80) 0%, oklch(0.985 0.005 80) 60%)",
           }}
         />
 
-        {/* The orb — partially off-screen, right side */}
+        {/* 
+          SCROLL LAYER (Framer Motion)
+          Controls the primary parallax and scale.
+        */}
         <motion.div
           style={{ scale: orbScale, y: orbY }}
-          className="orb-float absolute right-[-18vw] top-1/2 -translate-y-1/2"
+          className="absolute right-[-18vw] top-1/2 z-10 -translate-y-1/2"
         >
-          <motion.div
-            style={{ y: 0 }}
-            className="orb relative rounded-full"
-          >
-            <div style={{ width: "min(85vh, 95vw)", aspectRatio: "1 / 1" }} />
-          </motion.div>
+          {/* 
+            IDLE LAYER (GSAP)
+            Controls the floating. Keeping this separate prevents the "jitter".
+          */}
+          <div className="orb-float-layer">
+            <div
+              className="orb relative rounded-full shadow-2xl"
+              style={{
+                width: "min(85vh, 95vw)",
+                aspectRatio: "1 / 1",
+                background: "linear-gradient(135deg, oklch(0.9 0.02 80), oklch(0.8 0.04 80))", // Fallback if CSS class is missing
+              }}
+            />
+          </div>
         </motion.div>
 
         {/* Editorial label rail — left vertical */}
-        <div className="absolute left-6 top-1/2 hidden -translate-y-1/2 -rotate-90 origin-left md:block">
-          <span className="eyebrow">N° 001 — Spring Atelier · MMXXVI</span>
+        <div className="absolute left-6 top-1/2 z-20 hidden -translate-y-1/2 -rotate-90 origin-left md:block">
+          <span className="eyebrow text-[10px] uppercase tracking-widest opacity-50">
+            N° 001 — Spring Clinic · MMXXVI
+          </span>
         </div>
 
         {/* Top-right meta */}
-        <div className="absolute right-6 top-28 hidden flex-col items-end text-right md:flex">
+        <div className="absolute right-12 top-28 z-20 hidden flex-col items-end text-right md:flex">
           <span className="eyebrow mb-2">A study in restraint</span>
-          <span className="font-serif text-sm italic text-graphite">— New Delhi</span>
+          <span className="font-serif text-sm italic text-graphite/60">— Udaipur</span>
         </div>
 
         {/* The headline */}
         <motion.div
           style={{ y: titleY, opacity: titleOpacity }}
-          className="relative z-10 mx-auto w-full max-w-[1700px] px-6 md:px-12"
+          className="relative z-20 mx-auto w-full max-w-[1700px] px-6 md:px-12"
         >
           <div className="max-w-[68rem]">
-            <span className="eyebrow mb-8 block">Aesthesia · Est. MMXIX</span>
-            <h1 className="display-xl">
-              <Lines lines={["The slow art", "of skin."]} />
+            <span className="eyebrow mb-8 block opacity-70">
+              AURA Skin and Hair Clinic · Udaipur
+            </span>
+            <h1 className="text-6xl font-light tracking-tight md:text-8xl lg:text-[10rem]">
+              <Lines lines={["The slow art", "of skin and hair."]} />
             </h1>
             <div className="mt-12 grid grid-cols-1 gap-10 md:grid-cols-12">
-              <p className="body-lg md:col-span-5 md:col-start-7">
-                A private dermatology atelier in Lutyens' Delhi.
-                Considered protocols. Architectural results. A long, quiet conversation
-                with the surface of the body.
-              </p>
+              <div className="md:col-span-5 md:col-start-7">
+                <p className="text-lg leading-relaxed text-graphite/80 md:text-xl">
+                  A holistic center for your skin and hair problems in Udaipur. Thoughtful care,
+                  medical expertise and accessible solutions.
+                </p>
+                <div className="mt-10">
+                  <HeroCTA />
+                </div>
+              </div>
             </div>
           </div>
         </motion.div>
@@ -93,10 +118,12 @@ export function CinematicHero() {
         {/* Scroll cue */}
         <motion.div
           style={{ y: subY }}
-          className="absolute bottom-10 left-1/2 -translate-x-1/2 text-center"
+          className="absolute bottom-10 left-1/2 z-20 -translate-x-1/2 text-center"
         >
-          <span className="eyebrow block">Scroll · slowly</span>
-          <div className="mx-auto mt-3 h-10 w-px bg-graphite/40" />
+          <span className="eyebrow block text-[10px] uppercase tracking-[0.3em]">
+            Scroll · slowly
+          </span>
+          <div className="mx-auto mt-3 h-10 w-px bg-graphite/20" />
         </motion.div>
       </div>
     </section>
@@ -107,15 +134,17 @@ function Lines({ lines }: { lines: string[] }) {
   return (
     <>
       {lines.map((line, i) => (
-        <span key={i} className="block reveal-mask">
+        <span key={i} className="relative block overflow-hidden pb-2">
           <motion.span
-            initial={{ y: "110%" }}
+            initial={{ y: "100%" }}
             animate={{ y: "0%" }}
-            transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1], delay: 0.2 + i * 0.18 }}
+            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.2 + i * 0.15 }}
             className="block"
           >
             {line.split(" ").map((w, j) => (
-              <span key={j} className="mr-[0.25em] inline-block italic-alt">{w}</span>
+              <span key={j} className="mr-[0.25em] inline-block last:mr-0 italic-alt">
+                {w}
+              </span>
             ))}
           </motion.span>
         </span>
@@ -128,10 +157,10 @@ export function HeroCTA() {
   return (
     <Link
       to="/book"
-      className="group inline-flex items-center gap-4 rounded-full border border-ink px-7 py-3.5 text-[12px] uppercase tracking-[0.22em] transition-colors hover:bg-ink hover:text-background"
+      className="group inline-flex items-center gap-6 rounded-full border border-accent/80 bg-transparent px-8 py-4 text-[11px] uppercase tracking-[0.25em] text-accent transition-all hover:bg-accent hover:text-accent-foreground"
     >
       Begin a consultation
-      <span className="transition-transform group-hover:translate-x-1">→</span>
+      <span className="transition-transform duration-500 group-hover:translate-x-2">→</span>
     </Link>
   );
 }

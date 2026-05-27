@@ -8,9 +8,9 @@ import { motion, AnimatePresence } from "framer-motion";
 export const Route = createFileRoute("/faq")({
   head: () => ({
     meta: [
-      { title: "Questions — Aesthesia" },
+      { title: "Questions — AURA Skin and Hair Clinic" },
       { name: "description", content: "Considered answers." },
-      { property: "og:title", content: "Questions — Aesthesia" },
+      { property: "og:title", content: "Questions — AURA Skin and Hair Clinic" },
       { property: "og:description", content: "On consultation, walk-ins, sensitive skin, imagery." },
     ],
   }),

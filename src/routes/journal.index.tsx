@@ -7,9 +7,9 @@ import { journal } from "@/content/site";
 export const Route = createFileRoute("/journal/")({
   head: () => ({
     meta: [
-      { title: "Journal — Aesthesia" },
-      { name: "description", content: "Notes from the atelier." },
-      { property: "og:title", content: "Journal — Aesthesia" },
+      { title: "Journal — AURA Skin and Hair Clinic" },
+      { name: "description", content: "Notes from the clinic." },
+      { property: "og:title", content: "Journal — AURA Skin and Hair Clinic" },
       { property: "og:description", content: "Editorial writing on skin and restraint." },
     ],
   }),
@@ -20,7 +20,7 @@ function Journal() {
   return (
     <div className="pt-40">
       <Section eyebrow="The Journal" num="MMXXVI">
-        <h1 className="display-xl"><Reveal>Notes from the atelier.</Reveal></h1>
+        <h1 className="display-xl"><Reveal>Notes from the clinic.</Reveal></h1>
       </Section>
       <section className="px-6 md:px-12">
         <div className="mx-auto max-w-[1700px]">
@@ -40,7 +40,7 @@ function Journal() {
         </div>
       </section>
       <Section>
-        <Plate tone="bone" ratio="21/9" label="From the atelier · still life" />
+        <Plate tone="bone" ratio="21/9" label="From the clinic · still life" />
       </Section>
     </div>
   );

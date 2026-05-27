@@ -94,7 +94,7 @@ export function Nav() {
                 </ul>
               </div>
               <div className="hidden md:col-span-5 md:block">
-                <p className="eyebrow mb-6">Atelier</p>
+                <p className="eyebrow mb-6">Clinic</p>
                 <p className="font-serif text-2xl leading-snug">{site.address}</p>
                 <p className="mt-8 text-sm text-graphite">{site.hours}</p>
                 <p className="mt-2 text-sm">{site.email}</p>
@@ -123,7 +123,7 @@ export function Footer() {
           </Link>
         </div>
         <div className="md:col-span-3">
-          <p className="eyebrow mb-6">Atelier</p>
+          <p className="eyebrow mb-6">Clinic</p>
           <p className="text-sm leading-relaxed text-graphite">{site.address}</p>
           <p className="mt-4 text-sm text-graphite">{site.hours}</p>
         </div>
@@ -143,7 +143,7 @@ export function Footer() {
       </div>
       <div className="border-t border-border">
         <div className="mx-auto flex max-w-[1700px] flex-wrap items-center justify-between gap-4 px-6 py-6 text-xs text-graphite md:px-12">
-          <p>© {new Date().getFullYear()} {site.name}. A private dermatology atelier.</p>
+          <p>© {new Date().getFullYear()} {site.name}. A private dermatology clinic.</p>
           <div className="flex gap-6">
             <Link to="/privacy" className="hover:text-ink">Privacy</Link>
             <Link to="/terms" className="hover:text-ink">Terms</Link>

@@ -6,9 +6,9 @@ import { treatments } from "@/content/site";
 export const Route = createFileRoute("/book")({
   head: () => ({
     meta: [
-      { title: "Book a Consultation — Aesthesia" },
+      { title: "Book a Consultation — AURA Skin and Hair Clinic" },
       { name: "description", content: "Begin a quiet conversation with the skin." },
-      { property: "og:title", content: "Book a Consultation — Aesthesia" },
+      { property: "og:title", content: "Book a Consultation — AURA Skin and Hair Clinic" },
       { property: "og:description", content: "Ninety minutes, in private." },
     ],
   }),

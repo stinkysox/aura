@@ -6,9 +6,9 @@ import { testimonials } from "@/content/site";
 export const Route = createFileRoute("/testimonials")({
   head: () => ({
     meta: [
-      { title: "Voices — Aesthesia" },
+      { title: "Voices — AURA Skin and Hair Clinic" },
       { name: "description", content: "What our patients have said, quietly." },
-      { property: "og:title", content: "Voices — Aesthesia" },
+      { property: "og:title", content: "Voices — AURA Skin and Hair Clinic" },
       { property: "og:description", content: "Patient voices." },
     ],
   }),

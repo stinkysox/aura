@@ -6,9 +6,9 @@ import { concerns } from "@/content/site";
 export const Route = createFileRoute("/concerns")({
   head: () => ({
     meta: [
-      { title: "Skin Concerns — Aesthesia" },
+      { title: "Skin Concerns — AURA Skin and Hair Clinic" },
       { name: "description", content: "Six considered concerns." },
-      { property: "og:title", content: "Skin Concerns — Aesthesia" },
+      { property: "og:title", content: "Skin Concerns — AURA Skin and Hair Clinic" },
       { property: "og:description", content: "Pigmentation, texture, volume, sensitivity, acne, longevity." },
     ],
   }),
