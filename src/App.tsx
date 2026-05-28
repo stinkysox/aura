@@ -21,6 +21,7 @@ import { TestimonialsPage } from "@/pages/TestimonialsPage";
 import { TreatmentsIndexPage } from "@/pages/TreatmentsIndexPage";
 import { TreatmentsSlugPage } from "@/pages/TreatmentsSlugPage";
 import { NotFoundPage } from "@/pages/NotFoundPage";
+import { ConversionBar } from "@/components/ConversionBar";
 
 export function App() {
   return (
@@ -52,6 +53,7 @@ export function App() {
         </Routes>
       </main>
       <Footer />
+      <ConversionBar />
     </SmoothScroll>
   );
 }

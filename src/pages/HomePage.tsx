@@ -7,10 +7,18 @@ import { Section, Hairline } from "@/components/Section";
 import { Plate } from "@/components/Placeholder";
 import { Reveal, FadeIn } from "@/lib/motion";
 import { philosophy, technology, testimonials, doctors } from "@/content/site";
+import { Seo } from "@/seo/seo";
+import { LocalBusinessSchema } from "@/seo/schema";
 
 export function HomePage() {
   return (
     <div>
+      <Seo
+        title="Dermatologist in Udaipur"
+        description="Dermatologist in Udaipur — AURA Skin and Hair Clinic. Holistic care for skin and hair concerns including acne, pigmentation, hair fall, PRP, lasers and hair transplantation."
+        path="/"
+      />
+      <LocalBusinessSchema />
       <CinematicHero />
 
       <Hairline />
@@ -58,7 +66,15 @@ export function HomePage() {
                 <FadeIn key={d.name} delay={i * 0.05}>
                   <li className="grid grid-cols-12 items-baseline border-b border-border py-8">
                     <span className="col-span-1 text-xs text-graphite">0{i + 1}</span>
-                    <span className="col-span-5 font-serif text-2xl">{d.name}</span>
+                    <span className="col-span-2 hidden md:block">
+                      <img
+                        src="/images/doctors/doctor-placeholder.svg"
+                        alt={`${d.name} — Dermatologist in Udaipur`}
+                        className="h-14 w-14 rounded-full object-cover border border-border"
+                        loading="lazy"
+                      />
+                    </span>
+                    <span className="col-span-9 md:col-span-4 font-serif text-2xl">{d.name}</span>
                     <span className="col-span-3 text-sm text-graphite">{d.role}</span>
                     <span className="col-span-3 text-right text-xs text-graphite">→ Profile</span>
                   </li>

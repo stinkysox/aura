@@ -2,11 +2,17 @@ import { Link } from "react-router-dom";
 import { Section } from "@/components/Section";
 import { Plate } from "@/components/Placeholder";
 import { Reveal, FadeIn } from "@/lib/motion";
-import { journal } from "@/content/site";
+import { blogPosts } from "@/content/blog";
+import { Seo } from "@/seo/seo";
 
 export function JournalIndexPage() {
   return (
     <div className="pt-40">
+      <Seo
+        title="Journal"
+        description="Clinic notes from a dermatologist in Udaipur — acne, hair fall, pigmentation, and practical skin routines."
+        path="/journal/"
+      />
       <Section eyebrow="The Journal" num="MMXXVI">
         <h1 className="display-xl">
           <Reveal>Notes from the clinic.</Reveal>
@@ -14,7 +20,7 @@ export function JournalIndexPage() {
       </Section>
       <section className="px-6 md:px-12">
         <div className="mx-auto max-w-[1700px]">
-          {journal.map((j, i) => (
+          {blogPosts.map((j, i) => (
             <FadeIn key={j.slug} delay={i * 0.04}>
               <Link
                 to={`/journal/${j.slug}`}

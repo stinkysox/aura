@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f6f2eb"/>
+      <stop offset="1" stop-color="#e9dfd2"/>
+    </linearGradient>
+  </defs>
+  <rect width="256" height="256" rx="128" fill="url(#g)"/>
+  <circle cx="128" cy="102" r="44" fill="#0f1116" opacity="0.18"/>
+  <path d="M48 220c12-44 52-68 80-68s68 24 80 68" fill="#0f1116" opacity="0.12"/>
+  <text x="128" y="246" text-anchor="middle" font-family="system-ui, -apple-system, Segoe UI, Roboto, Arial" font-size="12" fill="#0f1116" opacity="0.55">Doctor</text>
+</svg>
+

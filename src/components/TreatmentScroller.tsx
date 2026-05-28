@@ -286,6 +286,14 @@ export function TreatmentScroller() {
               md:p-14
             "
           >
+            <div className="mb-7 overflow-hidden rounded-3xl border border-black/10 bg-white/50">
+              <img
+                src="/images/treatments/treatment-placeholder.svg"
+                alt={`${t.name} — Skin and Hair Clinic in Udaipur`}
+                className="h-44 w-full object-cover md:h-56"
+                loading="lazy"
+              />
+            </div>
             {/* ========================= */}
             {/* SUBTLE GLOW */}
             {/* ========================= */}

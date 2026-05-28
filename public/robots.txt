@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://auraskinandhairclinic.com/sitemap.xml
+

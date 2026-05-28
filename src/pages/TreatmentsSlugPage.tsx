@@ -1,6 +1,5 @@
 import { Link, useParams } from "react-router-dom";
 import { Section } from "@/components/Section";
-import { Plate } from "@/components/Placeholder";
 import { Reveal, FadeIn } from "@/lib/motion";
 import { treatments } from "@/content/site";
 import { NotFoundPage } from "./NotFoundPage";
@@ -25,7 +24,18 @@ export function TreatmentsSlugPage() {
       <section className="px-6 md:px-12">
         <div className="mx-auto grid max-w-[1700px] grid-cols-12 gap-6 md:gap-10">
           <FadeIn className="col-span-12 md:col-span-7">
-            <Plate tone="bone" ratio="4/5" label={`${t.name} · still`} />
+            <div className="relative overflow-hidden rounded-[2.5rem] border border-border bg-bone">
+              <img
+                src="/images/treatments/treatment-placeholder.svg"
+                alt={`${t.name} — Dermatologist in Udaipur`}
+                className="h-full w-full object-cover"
+                loading="lazy"
+              />
+              <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-[10px] uppercase tracking-[0.25em] text-ink">
+                <span className="opacity-70">{t.name}</span>
+                <span className="opacity-50">— placeholder</span>
+              </div>
+            </div>
           </FadeIn>
           <div className="col-span-12 mt-12 md:col-span-4 md:col-start-9 md:mt-32">
             <p className="eyebrow mb-4">The protocol</p>
@@ -53,7 +63,14 @@ export function TreatmentsSlugPage() {
             .slice(0, 3)
             .map((x) => (
               <Link key={x.slug} to={`/treatments/${x.slug}`} className="group col-span-12 md:col-span-4">
-                <Plate tone="stone" ratio="4/5" label={`N° ${x.number}`} />
+                <div className="overflow-hidden rounded-3xl border border-border bg-stone">
+                  <img
+                    src="/images/treatments/treatment-placeholder.svg"
+                    alt={`${x.name} — Skin and Hair Clinic in Udaipur`}
+                    className="h-64 w-full object-cover"
+                    loading="lazy"
+                  />
+                </div>
                 <p className="mt-4 font-serif text-2xl transition-transform group-hover:translate-x-1">
                   {x.name}
                 </p>

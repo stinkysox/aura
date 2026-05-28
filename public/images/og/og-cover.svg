@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f6f2eb"/>
+      <stop offset="1" stop-color="#efe6da"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <circle cx="920" cy="270" r="260" fill="#0f1116" opacity="0.08"/>
+  <circle cx="940" cy="250" r="220" fill="#0f1116" opacity="0.06"/>
+  <text x="80" y="210" font-family="Georgia, 'Times New Roman', serif" font-size="64" fill="#0f1116">AURA</text>
+  <text x="80" y="280" font-family="system-ui, -apple-system, Segoe UI, Roboto, Arial" font-size="28" fill="#0f1116" opacity="0.85">Dermatologist in Udaipur</text>
+  <text x="80" y="325" font-family="system-ui, -apple-system, Segoe UI, Roboto, Arial" font-size="24" fill="#0f1116" opacity="0.7">Skin and Hair Clinic in Udaipur</text>
+  <text x="80" y="430" font-family="system-ui, -apple-system, Segoe UI, Roboto, Arial" font-size="18" fill="#0f1116" opacity="0.6">By appointment · 221, Sardarpura, Udaipur</text>
+</svg>
+
