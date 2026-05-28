@@ -7,7 +7,7 @@ import { Seo } from "@/seo/seo";
 
 export function JournalIndexPage() {
   return (
-    <div className="pt-40">
+    <div className="pt-24">
       <Seo
         title="Journal"
         description="Clinic notes from a dermatologist in Udaipur — acne, hair fall, pigmentation, and practical skin routines."

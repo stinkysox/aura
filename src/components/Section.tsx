@@ -12,7 +12,7 @@ export function Section({
   num?: string;
 }) {
   return (
-    <section className={`relative px-6 py-32 md:px-12 md:py-48 ${className}`}>
+    <section className={`relative px-6 py-16 md:px-12 md:py-24 ${className}`}>
       {(eyebrow || num) && (
         <div className="mx-auto mb-16 flex max-w-[1700px] items-center justify-between">
           {eyebrow && <span className="eyebrow">{eyebrow}</span>}

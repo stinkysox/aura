@@ -7,7 +7,7 @@ import { motion, AnimatePresence } from "framer-motion";
 export function FaqPage() {
   const [open, setOpen] = useState<number | null>(0);
   return (
-    <div className="pt-40">
+    <div className="pt-24">
       <Section eyebrow="Questions" num="Considered answers">
         <h1 className="display-xl">
           <Reveal>A few things asked.</Reveal>

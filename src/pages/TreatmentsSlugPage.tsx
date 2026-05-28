@@ -11,7 +11,7 @@ export function TreatmentsSlugPage() {
   if (!t) return <NotFoundPage />;
 
   return (
-    <div className="pt-40">
+    <div className="pt-24">
       <Section eyebrow={`Composition · ${t.family}`} num={`N° ${t.number}`}>
         <h1 className="display-xl">
           <Reveal>{t.name}</Reveal>

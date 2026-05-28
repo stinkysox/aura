@@ -5,7 +5,7 @@ import { site } from "@/content/site";
 
 export function AboutPage() {
   return (
-    <div className="pt-40">
+    <div className="pt-24">
       <Section eyebrow="Manifesto" num="N° 00">
         <h1 className="display-xl max-w-6xl">
           <Reveal>A holistic center for skin and hair.</Reveal>

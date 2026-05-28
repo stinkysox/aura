@@ -4,7 +4,7 @@ import { site } from "@/content/site";
 
 export function ContactPage() {
   return (
-    <div className="pt-40">
+    <div className="pt-24">
       <Section eyebrow="Reach the clinic" num="By appointment">
         <h1 className="display-xl max-w-6xl">
           <Reveal>A quiet line, always answered.</Reveal>

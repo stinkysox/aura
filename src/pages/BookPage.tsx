@@ -44,7 +44,7 @@ export function BookPage() {
   }
 
   return (
-    <div className="pt-40">
+    <div className="pt-24">
       <Seo
         title="Book Appointment"
         description={`Book an appointment with a dermatologist in ${site.city}. Call, WhatsApp, or request a consultation at ${site.name}.`}

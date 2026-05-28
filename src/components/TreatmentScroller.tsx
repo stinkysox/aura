@@ -1,5 +1,6 @@
-import { useLayoutEffect, useRef } from "react";
+import { useRef } from "react";
 import { gsap, ScrollTrigger } from "@/lib/motion";
+import { useGSAP } from "@gsap/react";
 import { assets, treatments } from "@/content/site";
 import { Link } from "react-router-dom";
 
@@ -8,9 +9,9 @@ export function TreatmentScroller() {
 
   const cardsRef = useRef<(HTMLAnchorElement | null)[]>([]);
 
-  useLayoutEffect(() => {
-    const ctx = gsap.context(() => {
-      const cards = cardsRef.current.filter(Boolean);
+  useGSAP(() => {
+    // We don't need gsap.context anymore since useGSAP handles it
+    const cards = cardsRef.current.filter(Boolean);
 
       // =========================
       // INITIAL STATES
@@ -148,10 +149,9 @@ export function TreatmentScroller() {
           scrub: true,
         },
       });
-    }, sectionRef);
-
-    return () => ctx.revert();
-  }, []);
+    },
+    { scope: sectionRef }
+  );
 
   return (
     <section

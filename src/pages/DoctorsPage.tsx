@@ -4,7 +4,7 @@ import { doctors } from "@/content/site";
 
 export function DoctorsPage() {
   return (
-    <div className="pt-40">
+    <div className="pt-24">
       <Section eyebrow="The Hand" num="N° 04">
         <h1 className="display-xl">
           <Reveal>One specialist.</Reveal>

@@ -5,7 +5,7 @@ import { technology } from "@/content/site";
 
 export function TechnologyPage() {
   return (
-    <div className="pt-40">
+    <div className="pt-24">
       <Section eyebrow="Instruments" num="N° 03">
         <h1 className="display-xl max-w-6xl">
           <Reveal>The most considered instruments, used least.</Reveal>

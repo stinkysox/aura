@@ -12,7 +12,7 @@ const acts = [
 
 export function ExperiencePage() {
   return (
-    <div className="pt-40">
+    <div className="pt-24">
       <Section eyebrow="A choreographed visit" num="In five acts">
         <h1 className="display-xl">
           <Reveal>The visit, in five acts.</Reveal>

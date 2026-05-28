@@ -13,7 +13,7 @@ export function JournalSlugPage() {
   if (!j) return <NotFoundPage />;
 
   return (
-    <article className="pt-40">
+    <article className="pt-24">
       <Seo
         title={j.title}
         description={j.excerpt}

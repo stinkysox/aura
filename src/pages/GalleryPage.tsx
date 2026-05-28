@@ -10,7 +10,7 @@ const items = Array.from({ length: 9 }).map((_, i) => ({
 
 export function GalleryPage() {
   return (
-    <div className="pt-40">
+    <div className="pt-24">
       <Section eyebrow="The Archive" num="By consent only">
         <h1 className="display-xl">
           <Reveal>Quiet results.</Reveal>

@@ -4,7 +4,7 @@ import { concerns } from "@/content/site";
 
 export function ConcernsPage() {
   return (
-    <div className="pt-40">
+    <div className="pt-24">
       <Section eyebrow="Concerns" num="N° 03">
         <h1 className="display-xl max-w-5xl">
           <Reveal>What the skin asks for.</Reveal>

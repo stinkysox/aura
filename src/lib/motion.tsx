@@ -9,7 +9,12 @@ if (typeof window !== "undefined") {
 }
 
 /* ─── Lenis smooth scroll provider ─── */
+import { useLocation } from "react-router-dom";
+
 export function SmoothScroll({ children }: { children: ReactNode }) {
+  const { pathname } = useLocation();
+  const lenisRef = useRef<Lenis | null>(null);
+
   useEffect(() => {
     const lenis = new Lenis({
       duration: 1.25,
@@ -17,6 +22,7 @@ export function SmoothScroll({ children }: { children: ReactNode }) {
       smoothWheel: true,
       lerp: 0.085,
     });
+    lenisRef.current = lenis;
 
     function raf(time: number) {
       lenis.raf(time);
@@ -29,6 +35,14 @@ export function SmoothScroll({ children }: { children: ReactNode }) {
       lenis.destroy();
     };
   }, []);
+
+  useEffect(() => {
+    if (lenisRef.current) {
+      lenisRef.current.scrollTo(0, { immediate: true });
+    }
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
   return <div className="w-full min-w-0 overflow-x-clip">{children}</div>;
 }
 

@@ -4,7 +4,7 @@ import { testimonials } from "@/content/site";
 
 export function TestimonialsPage() {
   return (
-    <div className="pt-40">
+    <div className="pt-24">
       <Section eyebrow="Voices" num="N° 05">
         <h1 className="display-xl">
           <Reveal>Said quietly.</Reveal>

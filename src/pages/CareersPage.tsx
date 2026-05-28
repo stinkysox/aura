@@ -10,7 +10,7 @@ const roles = [
 
 export function CareersPage() {
   return (
-    <div className="pt-40">
+    <div className="pt-24">
       <Section eyebrow="The Clinic" num="On joining">
         <h1 className="display-xl max-w-6xl">
           <Reveal>We hire slowly.</Reveal>

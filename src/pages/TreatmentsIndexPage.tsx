@@ -5,7 +5,7 @@ import { treatments } from "@/content/site";
 
 export function TreatmentsIndexPage() {
   return (
-    <div className="pt-40">
+    <div className="pt-24">
       <Section eyebrow="The Catalogue" num="MMXXVI">
         <h1 className="display-xl">
           <Reveal>Six compositions.</Reveal>
