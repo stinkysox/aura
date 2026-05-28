@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import { Helmet } from "react-helmet-async";
-import { site } from "@/content/site";
+import { assets, site } from "@/content/site";
 
 export type SeoProps = {
   title: string;
@@ -12,7 +12,7 @@ export type SeoProps = {
 };
 
 const DEFAULT_ORIGIN = "https://auraskinandhairclinic.com";
-const DEFAULT_OG = "/images/og/og-cover.svg";
+const DEFAULT_OG = assets.og.cover;
 
 function absoluteUrl(pathOrUrl: string, origin: string) {
   if (pathOrUrl.startsWith("http://") || pathOrUrl.startsWith("https://")) return pathOrUrl;

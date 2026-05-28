@@ -10,6 +10,22 @@ export const site = {
   hours: "By appointment",
 };
 
+// Centralized media paths. Replace placeholders with real files later without touching components.
+export const assets = {
+  doctors: {
+    placeholder: "/images/doctors/doctor-placeholder.svg",
+  },
+  treatments: {
+    placeholder: "/images/treatments/treatment-placeholder.svg",
+  },
+  blog: {
+    placeholder: "/images/blog/blog-placeholder.svg",
+  },
+  og: {
+    cover: "/images/og/og-cover.svg",
+  },
+} as const;
+
 export const nav = [
   { label: "Clinic", to: "/about" },
   { label: "Treatments", to: "/treatments" },
@@ -125,6 +141,7 @@ export const doctors = [
   {
     name: "Dr. Nidheesh Agarwal",
     role: "M.B.B.S., M.D. (Dermatology) · Dermatologist · Cosmetologist · Hair Transplant Surgeon",
+    image: assets.doctors.placeholder,
     bio: "Dr. Nidheesh Agarwal is a dermatologist, cosmetologist and hair transplant surgeon based in Udaipur. He completed his M.B.B.S. and M.D. in Dermatology from RNT Medical College, Udaipur. During his post-graduation he presented his research on chicken pox scars at the 2013 World Congress of Cosmetic Dermatology in Greece and received the Global Education Award from the International Society of Dermatology in 2014. After serving as Assistant Professor at Geetanjali Medical College for four years, he founded AURA Skin and Hair Clinic to provide holistic, affordable solutions for skin and hair concerns.",
   },
 ];

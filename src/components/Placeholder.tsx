@@ -5,12 +5,15 @@
 type Tone = "bone" | "stone" | "graphite" | "ink" | "skin" | "steel";
 
 const tones: Record<Tone, string> = {
-  bone:     "linear-gradient(135deg, oklch(0.96 0.01 80), oklch(0.9 0.012 78))",
-  stone:    "linear-gradient(135deg, oklch(0.88 0.012 78), oklch(0.78 0.012 76))",
-  graphite: "linear-gradient(135deg, oklch(0.42 0.01 270), oklch(0.28 0.008 270))",
-  ink:      "linear-gradient(135deg, oklch(0.22 0.008 270), oklch(0.12 0.006 270))",
-  skin:     "linear-gradient(135deg, oklch(0.92 0.025 50), oklch(0.82 0.04 40))",
-  steel:    "linear-gradient(135deg, oklch(0.78 0.015 230), oklch(0.55 0.02 240))",
+  bone: "linear-gradient(135deg, var(--clinic-placeholder-bone-a), var(--clinic-placeholder-bone-b))",
+  stone:
+    "linear-gradient(135deg, var(--clinic-placeholder-stone-a), var(--clinic-placeholder-stone-b))",
+  graphite:
+    "linear-gradient(135deg, var(--clinic-placeholder-graphite-a), var(--clinic-placeholder-graphite-b))",
+  ink: "linear-gradient(135deg, var(--clinic-placeholder-ink-a), var(--clinic-placeholder-ink-b))",
+  skin: "linear-gradient(135deg, var(--clinic-placeholder-skin-a), var(--clinic-placeholder-skin-b))",
+  steel:
+    "linear-gradient(135deg, var(--clinic-placeholder-steel-a), var(--clinic-placeholder-steel-b))",
 };
 
 export function Plate({
@@ -48,7 +51,7 @@ export function Plate({
       />
       {label && (
         <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-[10px] uppercase tracking-[0.25em]"
-             style={{ color: tone === "ink" || tone === "graphite" ? "oklch(0.96 0.008 80)" : "oklch(0.22 0.006 270)" }}>
+             style={{ color: tone === "ink" || tone === "graphite" ? "var(--color-background)" : "var(--color-ink)" }}>
           <span className="opacity-70">{label}</span>
           <span className="opacity-50">— still life</span>
         </div>

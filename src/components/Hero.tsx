@@ -41,16 +41,10 @@ export function CinematicHero() {
   }, []);
 
   return (
-    <section ref={root} className="relative h-[150vh] bg-background">
-      <div className="sticky top-0 flex h-screen w-full items-center overflow-hidden">
+    <section ref={root} className="relative h-[150vh] overflow-hidden bg-background">
+      <div className="sticky top-0 flex h-screen w-full max-w-full items-center overflow-hidden">
         {/* Atmospheric backdrop */}
-        <div
-          className="absolute inset-0 z-0"
-          style={{
-            background:
-              "radial-gradient(60% 80% at 70% 40%, oklch(0.96 0.012 80) 0%, oklch(0.985 0.005 80) 60%)",
-          }}
-        />
+        <div className="hero-atmosphere absolute inset-0 z-0" />
 
         {/* 
           SCROLL LAYER (Framer Motion)
@@ -58,7 +52,7 @@ export function CinematicHero() {
         */}
         <motion.div
           style={{ scale: orbScale, y: orbY }}
-          className="absolute right-[-18vw] top-1/2 z-10 -translate-y-1/2"
+          className="pointer-events-none absolute top-1/2 right-0 z-10 w-[min(85vh,92vw)] -translate-y-1/2 translate-x-[30%] md:translate-x-[22%]"
         >
           {/* 
             IDLE LAYER (GSAP)
@@ -66,11 +60,9 @@ export function CinematicHero() {
           */}
           <div className="orb-float-layer">
             <div
-              className="orb relative rounded-full shadow-2xl"
+              className="orb relative aspect-square w-full rounded-full shadow-2xl"
               style={{
-                width: "min(85vh, 95vw)",
-                aspectRatio: "1 / 1",
-                background: "linear-gradient(135deg, oklch(0.9 0.02 80), oklch(0.8 0.04 80))", // Fallback if CSS class is missing
+                background: "linear-gradient(135deg, var(--clinic-bone), var(--clinic-stone))",
               }}
             />
           </div>
@@ -98,7 +90,7 @@ export function CinematicHero() {
             <span className="eyebrow mb-8 block opacity-70">
               AURA Skin and Hair Clinic · Udaipur
             </span>
-            <h1 className="text-6xl font-light tracking-tight md:text-8xl lg:text-[10rem]">
+            <h1 className="max-w-full text-6xl font-light tracking-tight break-words md:text-8xl lg:text-[10rem]">
               <Lines lines={["The slow art", "of skin and hair."]} />
             </h1>
             <div className="mt-12 grid grid-cols-1 gap-10 md:grid-cols-12">

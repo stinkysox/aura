@@ -29,7 +29,7 @@ export function SmoothScroll({ children }: { children: ReactNode }) {
       lenis.destroy();
     };
   }, []);
-  return <>{children}</>;
+  return <div className="w-full min-w-0 overflow-x-clip">{children}</div>;
 }
 
 /* ─── Editorial reveal: word-by-word rise from a mask ─── */

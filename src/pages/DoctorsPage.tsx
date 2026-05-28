@@ -1,5 +1,4 @@
 import { Section } from "@/components/Section";
-import { Plate } from "@/components/Placeholder";
 import { Reveal, FadeIn } from "@/lib/motion";
 import { doctors } from "@/content/site";
 
@@ -19,7 +18,14 @@ export function DoctorsPage() {
                 className={`grid grid-cols-12 items-end gap-6 md:gap-10 ${i % 2 ? "" : "md:[&>*:first-child]:order-2"}`}
               >
                 <div className="col-span-12 md:col-span-5">
-                  <Plate tone={i % 2 ? "bone" : "skin"} ratio="3/4" label={d.name} />
+                  <div className="relative overflow-hidden rounded-3xl border border-border bg-bone">
+                    <img
+                      src={d.image}
+                      alt={`${d.name} — Dermatologist in Udaipur`}
+                      className="h-full w-full object-cover"
+                      loading="lazy"
+                    />
+                  </div>
                 </div>
                 <div className="col-span-12 md:col-span-6 md:col-start-7">
                   <span className="eyebrow mb-4 block">

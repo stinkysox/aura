@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { site, nav } from "@/content/site";
 import { Magnetic } from "@/lib/motion";
+import { ConversionBar } from "@/components/ConversionBar";
 
 export function Nav() {
   const [open, setOpen] = useState(false);
@@ -22,13 +23,13 @@ export function Nav() {
   return (
     <>
       <header
-        className={`fixed inset-x-0 top-0 z-50 transition-[padding,background] duration-700 ${
+        className={`fixed inset-x-0 top-0 z-[70] transition-[padding,background] duration-700 ${
           scrolled ? "py-4 bg-background/70 backdrop-blur-xl" : "py-7"
         }`}
       >
-        <div className="mx-auto flex max-w-[1700px] items-center justify-between px-6 md:px-12">
-          <Link to="/" className="group flex items-baseline gap-3">
-            <span className="font-serif text-2xl tracking-tight">{site.name}</span>
+        <div className="mx-auto flex max-w-[1700px] min-w-0 items-center justify-between gap-4 px-6 md:px-12">
+          <Link to="/" className="group flex min-w-0 items-baseline gap-3">
+            <span className="truncate font-serif text-xl tracking-tight sm:text-2xl">{site.name}</span>
             <span className="eyebrow hidden md:inline">— {site.tagline}</span>
           </Link>
 
@@ -74,9 +75,9 @@ export function Nav() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-            className="fixed inset-0 z-40 bg-ivory"
+            className="fixed inset-0 z-[55] overflow-y-auto bg-ivory"
           >
-            <div className="mx-auto grid h-full max-w-[1700px] grid-cols-1 items-center px-6 pt-28 md:grid-cols-12 md:px-12">
+            <div className="mx-auto grid min-h-full max-w-[1700px] grid-cols-1 items-start px-6 pb-10 pt-28 md:grid-cols-12 md:items-center md:px-12 md:pb-0">
               <div className="md:col-span-7">
                 <p className="eyebrow mb-8">Index</p>
                 <ul className="space-y-3">
@@ -87,7 +88,10 @@ export function Nav() {
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.9, delay: 0.15 + i * 0.05, ease: [0.16, 1, 0.3, 1] }}
                     >
-                      <Link to={n.to} className="font-serif text-5xl leading-tight tracking-tight md:text-7xl">
+                      <Link
+                        to={n.to}
+                        className="block max-w-full break-words font-serif text-5xl leading-tight tracking-tight md:text-7xl"
+                      >
                         <span className="mr-6 align-middle text-xs text-graphite">0{i + 1}</span>
                         {n.label}
                       </Link>
@@ -106,6 +110,8 @@ export function Nav() {
           </motion.div>
         )}
       </AnimatePresence>
+
+      <ConversionBar hidden={open} />
     </>
   );
 }

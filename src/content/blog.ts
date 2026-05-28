@@ -1,3 +1,5 @@
+import { assets } from "@/content/site";
+
 export type BlogPost = {
   slug: string;
   title: string;
@@ -19,7 +21,7 @@ export const blogPosts: BlogPost[] = [
     excerpt:
       "A practical checklist: diagnosis-first consultations, transparent plans, safe procedures, and follow-ups that actually happen.",
     keywords: ["Dermatologist in Udaipur", "Skin and Hair Clinic in Udaipur", "acne", "pigmentation"],
-    heroImage: "/images/blog/blog-placeholder.svg",
+    heroImage: assets.blog.placeholder,
     body: [
       "Searching for a dermatologist in Udaipur can feel overwhelming — every clinic promises quick results. A better approach is to look for a diagnosis-first consultation.",
       "At AURA Skin and Hair Clinic in Udaipur, we start by mapping your skin or scalp: triggers, timeline, past treatments, and what your lifestyle is doing to the condition.",
@@ -34,7 +36,7 @@ export const blogPosts: BlogPost[] = [
     read: "6 min",
     excerpt: "How we treat acne: calm inflammation first, then address marks and texture — without over-procedures.",
     keywords: ["Skin and Hair Clinic in Udaipur", "acne treatment in Udaipur", "Dermatologist in Udaipur"],
-    heroImage: "/images/blog/blog-placeholder.svg",
+    heroImage: assets.blog.placeholder,
     body: [
       "Acne is not just a surface problem — it’s a cycle of inflammation, barrier disruption, and sometimes hormones or stress.",
       "Step one is control: reduce active breakouts, protect the barrier, and simplify routines. Many patients improve just by stopping conflicting products.",
@@ -49,7 +51,7 @@ export const blogPosts: BlogPost[] = [
     read: "8 min",
     excerpt: "PRP works best when we understand why hair is shedding. Here’s the sequence we follow.",
     keywords: ["hair fall treatment in Udaipur", "PRP in Udaipur", "Dermatologist in Udaipur"],
-    heroImage: "/images/blog/blog-placeholder.svg",
+    heroImage: assets.blog.placeholder,
     body: [
       "Hair fall can be pattern loss, shedding, breakage, or scalp inflammation. Each needs a different plan.",
       "A proper evaluation includes timing (sudden vs gradual), nutrition, stress, postpartum changes, and scalp examination.",

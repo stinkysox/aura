@@ -21,13 +21,12 @@ import { TestimonialsPage } from "@/pages/TestimonialsPage";
 import { TreatmentsIndexPage } from "@/pages/TreatmentsIndexPage";
 import { TreatmentsSlugPage } from "@/pages/TreatmentsSlugPage";
 import { NotFoundPage } from "@/pages/NotFoundPage";
-import { ConversionBar } from "@/components/ConversionBar";
-
 export function App() {
   return (
     <SmoothScroll>
+      <div className="w-full min-w-0 overflow-x-clip">
       <Nav />
-      <main className="min-h-screen">
+      <main className="min-h-screen w-full min-w-0 overflow-x-clip">
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<AboutPage />} />
@@ -53,7 +52,7 @@ export function App() {
         </Routes>
       </main>
       <Footer />
-      <ConversionBar />
+      </div>
     </SmoothScroll>
   );
 }

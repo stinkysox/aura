@@ -1,6 +1,6 @@
 import { useLayoutEffect, useRef } from "react";
 import { gsap, ScrollTrigger } from "@/lib/motion";
-import { treatments } from "@/content/site";
+import { assets, treatments } from "@/content/site";
 import { Link } from "react-router-dom";
 
 export function TreatmentScroller() {
@@ -52,6 +52,9 @@ export function TreatmentScroller() {
       // CARD CHOREOGRAPHY
       // =========================
 
+      const slideX = Math.min(260, window.innerWidth * 0.42);
+      const exitX = Math.min(220, window.innerWidth * 0.36);
+
       cards.forEach((card, index) => {
         if (!card) return;
 
@@ -62,7 +65,7 @@ export function TreatmentScroller() {
         tl.fromTo(
           card,
           {
-            x: 260 * direction,
+            x: slideX * direction,
             y: 50,
             rotateY: 10 * direction,
             rotateZ: 1.5 * direction,
@@ -101,7 +104,7 @@ export function TreatmentScroller() {
         tl.to(
           card,
           {
-            x: -220 * direction,
+            x: -exitX * direction,
             y: -40,
             rotateY: -6 * direction,
             rotateZ: -1 * direction,
@@ -222,8 +225,11 @@ export function TreatmentScroller() {
           className="
             treatment-number
             absolute
+            right-0
             bottom-[5vh]
-            right-[5vw]
+            max-w-full
+            truncate
+            px-[5vw]
             font-serif
             text-[12vw]
             italic
@@ -239,12 +245,12 @@ export function TreatmentScroller() {
       {/* TOP BAR */}
       {/* ========================= */}
 
-      <div className="relative z-20 flex items-center justify-between px-6 pb-12 pt-10 md:px-12">
-        <span className="text-[10px] uppercase tracking-[0.35em] text-black/50">
+      <div className="relative z-20 flex min-w-0 items-center justify-between gap-4 px-6 pb-12 pt-10 md:px-12">
+        <span className="min-w-0 truncate text-[10px] uppercase tracking-[0.2em] text-black/50">
           N° 02 · The Catalogue
         </span>
 
-        <span className="text-[10px] uppercase tracking-[0.35em] text-black/50">
+        <span className="shrink-0 text-[10px] uppercase tracking-[0.2em] text-black/50">
           {treatments.length} compositions
         </span>
       </div>
@@ -254,7 +260,7 @@ export function TreatmentScroller() {
       {/* ========================= */}
 
       <div
-        className="relative h-[calc(100vh-120px)] w-full"
+        className="relative h-[calc(100vh-120px)] w-full max-w-full overflow-hidden"
         style={{
           perspective: "1600px",
         }}
@@ -288,7 +294,7 @@ export function TreatmentScroller() {
           >
             <div className="mb-7 overflow-hidden rounded-3xl border border-black/10 bg-white/50">
               <img
-                src="/images/treatments/treatment-placeholder.svg"
+                src={assets.treatments.placeholder}
                 alt={`${t.name} — Skin and Hair Clinic in Udaipur`}
                 className="h-44 w-full object-cover md:h-56"
                 loading="lazy"

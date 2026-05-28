@@ -1,7 +1,7 @@
 import { Link, useParams } from "react-router-dom";
 import { Section } from "@/components/Section";
 import { Reveal, FadeIn } from "@/lib/motion";
-import { treatments } from "@/content/site";
+import { assets, treatments } from "@/content/site";
 import { NotFoundPage } from "./NotFoundPage";
 
 export function TreatmentsSlugPage() {
@@ -26,7 +26,7 @@ export function TreatmentsSlugPage() {
           <FadeIn className="col-span-12 md:col-span-7">
             <div className="relative overflow-hidden rounded-[2.5rem] border border-border bg-bone">
               <img
-                src="/images/treatments/treatment-placeholder.svg"
+                src={assets.treatments.placeholder}
                 alt={`${t.name} — Dermatologist in Udaipur`}
                 className="h-full w-full object-cover"
                 loading="lazy"
@@ -65,7 +65,7 @@ export function TreatmentsSlugPage() {
               <Link key={x.slug} to={`/treatments/${x.slug}`} className="group col-span-12 md:col-span-4">
                 <div className="overflow-hidden rounded-3xl border border-border bg-stone">
                   <img
-                    src="/images/treatments/treatment-placeholder.svg"
+                    src={assets.treatments.placeholder}
                     alt={`${x.name} — Skin and Hair Clinic in Udaipur`}
                     className="h-64 w-full object-cover"
                     loading="lazy"

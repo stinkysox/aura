@@ -65,18 +65,20 @@ export function HomePage() {
               {doctors.map((d, i) => (
                 <FadeIn key={d.name} delay={i * 0.05}>
                   <li className="grid grid-cols-12 items-baseline border-b border-border py-8">
-                    <span className="col-span-1 text-xs text-graphite">0{i + 1}</span>
-                    <span className="col-span-2 hidden md:block">
+                    <span className="col-span-1 hidden text-xs text-graphite md:block">0{i + 1}</span>
+                    <span className="col-span-3 md:col-span-2">
                       <img
-                        src="/images/doctors/doctor-placeholder.svg"
+                        src={d.image}
                         alt={`${d.name} — Dermatologist in Udaipur`}
                         className="h-14 w-14 rounded-full object-cover border border-border"
                         loading="lazy"
                       />
                     </span>
                     <span className="col-span-9 md:col-span-4 font-serif text-2xl">{d.name}</span>
-                    <span className="col-span-3 text-sm text-graphite">{d.role}</span>
-                    <span className="col-span-3 text-right text-xs text-graphite">→ Profile</span>
+                    <span className="col-span-3 hidden text-sm text-graphite md:block">{d.role}</span>
+                    <span className="col-span-3 hidden text-right text-xs text-graphite md:block">
+                      → Profile
+                    </span>
                   </li>
                 </FadeIn>
               ))}
@@ -163,10 +165,10 @@ function TechnologySection() {
       <div className="px-6 py-32 md:px-12 md:py-48">
         <div className="mx-auto max-w-[1700px]">
           <div className="mb-20 flex items-baseline justify-between">
-            <span className="eyebrow" style={{ color: "oklch(0.7 0.01 80)" }}>
+            <span className="eyebrow tech-muted">
               N° 03 · Instruments
             </span>
-            <span className="eyebrow" style={{ color: "oklch(0.7 0.01 80)" }}>
+            <span className="eyebrow tech-muted">
               {technology.length} platforms
             </span>
           </div>
@@ -180,14 +182,14 @@ function TechnologySection() {
             <ul className="md:col-span-6 md:col-start-7">
               {technology.map((t, i) => (
                 <FadeIn key={t.name} delay={i * 0.05}>
-                  <li className="border-b py-8" style={{ borderColor: "oklch(1 0 0 / 0.12)" }}>
+                  <li className="tech-border border-b py-8">
                     <div className="flex items-baseline justify-between">
                       <span className="font-serif text-2xl">{t.name}</span>
-                      <span className="text-xs" style={{ color: "oklch(0.7 0.01 80)" }}>
+                      <span className="tech-muted text-xs">
                         0{i + 1}
                       </span>
                     </div>
-                    <p className="mt-3 max-w-md text-sm" style={{ color: "oklch(0.78 0.01 80)" }}>
+                    <p className="tech-note mt-3 max-w-md text-sm">
                       {t.note}
                     </p>
                   </li>
