@@ -6,7 +6,7 @@ import { TreatmentScroller } from "@/components/TreatmentScroller";
 import { Section, Hairline } from "@/components/Section";
 import { Plate } from "@/components/Placeholder";
 import { Reveal, FadeIn } from "@/lib/motion";
-import { philosophy, technology, testimonials, doctors } from "@/content/site";
+import { philosophy, technology, testimonials, doctors, assets } from "@/content/site";
 import { Seo } from "@/seo/seo";
 import { LocalBusinessSchema } from "@/seo/schema";
 
@@ -53,7 +53,7 @@ export function HomePage() {
       <TechnologySection />
 
       {/* Specialists */}
-      <Section eyebrow="The Hands" num="N° 04">
+      <Section eyebrow="Medical Team" num="N° 04">
         <div className="grid grid-cols-1 gap-12 md:grid-cols-12">
           <div className="md:col-span-4">
             <h2 className="display-md">
@@ -61,31 +61,40 @@ export function HomePage() {
             </h2>
           </div>
           <div className="md:col-span-7 md:col-start-6">
-            <ul>
+            {/* LARGE IMAGE GRID FOR SPECIALISTS */}
+            <div className="grid grid-cols-1 gap-8 sm:grid-cols-2">
               {doctors.map((d, i) => (
                 <FadeIn key={d.name} delay={i * 0.05}>
-                  <li className="grid grid-cols-12 items-baseline border-b border-border py-8">
-                    <span className="col-span-1 hidden text-xs text-graphite md:block">0{i + 1}</span>
-                    <span className="col-span-3 md:col-span-2">
+                  <div className="group flex flex-col">
+                    {/* LARGE PORTRAIT IMAGE FRAME */}
+                    <div className="relative overflow-hidden rounded-[2rem] border border-border bg-bone aspect-[4/5] w-full">
                       <img
                         src={d.image}
                         alt={`${d.name} — Dermatologist in Udaipur`}
-                        className="h-14 w-14 rounded-full object-cover border border-border"
+                        className="h-full w-full object-cover"
                         loading="lazy"
                       />
-                    </span>
-                    <span className="col-span-9 md:col-span-4 font-serif text-2xl">{d.name}</span>
-                    <span className="col-span-3 hidden text-sm text-graphite md:block">{d.role}</span>
-                    <span className="col-span-3 hidden text-right text-xs text-graphite md:block">
-                      → Profile
-                    </span>
-                  </li>
+                      <span className="absolute top-4 left-4 text-xs text-graphite/60 font-mono">
+                        0{i + 1}
+                      </span>
+                    </div>
+
+                    {/* DETAILS LAYER */}
+                    <div className="mt-6">
+                      <p className="text-xs uppercase tracking-[0.22em] text-graphite">{d.role}</p>
+                      <p className="font-serif text-2xl mt-1">{d.name}</p>
+                      <p className="mt-4 text-xs uppercase tracking-[0.22em] text-graphite transition-transform duration-300 group-hover:translate-x-1">
+                        → Profile
+                      </p>
+                    </div>
+                  </div>
                 </FadeIn>
               ))}
-            </ul>
+            </div>
+
             <Link
               to="/doctors"
-              className="mt-8 inline-block border-b border-ink pb-1 text-[12px] uppercase tracking-[0.22em] hover:opacity-60"
+              className="mt-12 inline-block border-b border-ink pb-1 text-[12px] uppercase tracking-[0.22em] hover:opacity-60"
             >
               The Specialists →
             </Link>
@@ -140,7 +149,17 @@ function ParallaxDiptych() {
     <section ref={ref} className="relative px-6 py-32 md:px-12 md:py-48">
       <div className="mx-auto grid max-w-[1700px] grid-cols-12 gap-6 md:gap-10">
         <motion.div style={{ y: y1 }} className="col-span-7 md:col-span-5">
-          <Plate tone="skin" ratio="3 / 4" label="Surface · 01" />
+          <div className="relative overflow-hidden" style={{ aspectRatio: "3 / 4" }}>
+            <img
+              src={assets.home.editorial1}
+              alt="Editorial — Surface treatment"
+              className="h-full w-full object-cover"
+              loading="lazy"
+            />
+            <div className="absolute bottom-4 left-4 text-xs font-serif text-background opacity-80">
+              Surface · 01
+            </div>
+          </div>
         </motion.div>
         <div className="col-span-5 flex flex-col justify-end pb-6 md:col-span-3">
           <span className="eyebrow mb-4">N° 02</span>
@@ -152,7 +171,17 @@ function ParallaxDiptych() {
           style={{ y: y2 }}
           className="col-span-12 mt-12 md:col-span-4 md:col-start-9 md:mt-32"
         >
-          <Plate tone="stone" ratio="4 / 5" label="Material · 02" />
+          <div className="relative overflow-hidden" style={{ aspectRatio: "4 / 5" }}>
+            <img
+              src={assets.home.editorial2}
+              alt="Editorial — Material and texture"
+              className="h-full w-full object-cover"
+              loading="lazy"
+            />
+            <div className="absolute bottom-4 left-4 text-xs font-serif text-background opacity-80">
+              Material · 02
+            </div>
+          </div>
         </motion.div>
       </div>
     </section>
@@ -165,19 +194,25 @@ function TechnologySection() {
       <div className="px-6 py-32 md:px-12 md:py-48">
         <div className="mx-auto max-w-[1700px]">
           <div className="mb-20 flex items-baseline justify-between">
-            <span className="eyebrow tech-muted">
-              N° 03 · Instruments
-            </span>
-            <span className="eyebrow tech-muted">
-              {technology.length} platforms
-            </span>
+            <span className="eyebrow tech-muted">N° 03 · Instruments</span>
+            <span className="eyebrow tech-muted">{technology.length} platforms</span>
           </div>
           <h2 className="display-lg max-w-4xl">
             <Reveal>The most considered instruments, used least.</Reveal>
           </h2>
           <div className="mt-24 grid grid-cols-1 gap-16 md:grid-cols-12 md:gap-10">
             <div className="md:col-span-5">
-              <Plate tone="graphite" ratio="4 / 5" label="Instrument · still" />
+              <div className="relative overflow-hidden" style={{ aspectRatio: "4 / 5" }}>
+                <img
+                  src={assets.home.technology}
+                  alt="Medical instruments"
+                  className="h-full w-full object-cover"
+                  loading="lazy"
+                />
+                <div className="absolute bottom-4 left-4 text-xs font-serif text-background opacity-80">
+                  Instrument · still
+                </div>
+              </div>
             </div>
             <ul className="md:col-span-6 md:col-start-7">
               {technology.map((t, i) => (
@@ -185,13 +220,9 @@ function TechnologySection() {
                   <li className="tech-border border-b py-8">
                     <div className="flex items-baseline justify-between">
                       <span className="font-serif text-2xl">{t.name}</span>
-                      <span className="tech-muted text-xs">
-                        0{i + 1}
-                      </span>
+                      <span className="tech-muted text-xs">0{i + 1}</span>
                     </div>
-                    <p className="tech-note mt-3 max-w-md text-sm">
-                      {t.note}
-                    </p>
+                    <p className="tech-note mt-3 max-w-md text-sm">{t.note}</p>
                   </li>
                 </FadeIn>
               ))}
@@ -202,4 +233,3 @@ function TechnologySection() {
     </section>
   );
 }
-

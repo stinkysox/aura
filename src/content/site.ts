@@ -10,16 +10,99 @@ export const site = {
   hours: "By appointment",
 };
 
-// Centralized media paths. Replace placeholders with real files later without touching components.
+/**
+ * CENTRALIZED IMAGE MANAGEMENT
+ *
+ * Easy swap guide:
+ * 1. Local images: Replace URLs with /images/category/filename.jpg
+ * 2. Upload to public/images/ in the directory structure below
+ * 3. All references update automatically site-wide
+ */
 export const assets = {
+  home: {
+    philosophy: "https://i.pinimg.com/736x/56/86/91/568691dff91597e5a16a53acb3b714dd.jpg", // Skincare/wellness
+    editorial1: "https://i.pinimg.com/736x/64/bd/e5/64bde5ebf3a9763a207a1f8e83446a66.jpg", // Professional medical
+    editorial2: "https://i.pinimg.com/736x/c1/e6/b9/c1e6b9e39633d586ab2903d924f928d0.jpg", // Skincare treatment
+    technology: "https://i.pinimg.com/736x/7c/59/32/7c59324608843107af3e4f88d20ab8c0.jpg", // Medical instruments
+  },
   doctors: {
-    placeholder: "/images/doctors/doctor-placeholder.svg",
+    placeholder: "https://i.pinimg.com/736x/c7/6e/a1/c76ea103a30faa0e13c92e79cffe2fdf.jpg",
+
+    "nidheesh-agarwal": "https://i.pinimg.com/736x/0c/e0/da/0ce0da30bceee3a1c274cf376860ea12.jpg", // Professional doctor
   },
   treatments: {
-    placeholder: "/images/treatments/treatment-placeholder.svg",
+    placeholder: "https://i.pinimg.com/736x/c7/6e/a1/c76ea103a30faa0e13c92e79cffe2fdf.jpg",
+    // Local and clinical treatment asset mappings
+    "clinical-dermatology":
+      "https://i.pinimg.com/736x/1d/6b/95/1d6b951264840c4e07ec3c57c9e8cfd3.jpg", // Fixed typo here (hhttps -> https)
+    "hair-treatments": "https://i.pinimg.com/736x/2d/c5/56/2dc5562191c79a70835f4a82fdb2513d.jpg",
+    "hair-transplantation":
+      "https://i.pinimg.com/736x/d3/e0/2d/d3e02dfe7645c6cf64e84207672dc511.jpg",
+    cosmetology: "https://i.pinimg.com/736x/8d/0a/83/8d0a83ee14cf6cd5e88867bac29ba3ab.jpg",
+    "skin-surgeries": "https://i.pinimg.com/736x/48/2a/7b/482a7bb5508d5c4ebcb9f968fbb350fb.jpg",
+    "pediatric-dermatology":
+      "https://i.pinimg.com/736x/c6/1b/f5/c61bf503eb65036e8085e131c91493bd.jpg",
+    "systemic-dermatology":
+      "https://i.pinimg.com/736x/99/d8/75/99d875a247e2c398e53d4dba003cf559.jpg",
+    "genital-dermatology":
+      "https://i.pinimg.com/236x/cd/25/d4/cd25d418c8f0b359a0196ef165da44e1.jpg",
   },
   blog: {
     placeholder: "/images/blog/blog-placeholder.svg",
+    // Blog hero images
+    "dermatologist-in-udaipur":
+      "https://images.unsplash.com/photo-1576091160550-112405c3e149?w=1000&q=80",
+    "acne-treatment": "https://images.unsplash.com/photo-1576091160500-112405c3e149?w=1000&q=80",
+    "hair-fall-treatment":
+      "https://images.unsplash.com/photo-1576091160495-112405c3e149?w=1000&q=80",
+  },
+  gallery: {
+    // Before/after images - these can be replaced with real patient results (with consent)
+    1: {
+      before: "https://images.unsplash.com/photo-1576091160550-112405c3e149?w=800&q=80",
+      after: "https://images.unsplash.com/photo-1576091160505-112405c3e149?w=800&q=80",
+      label: "Luminance",
+    },
+    2: {
+      before: "https://images.unsplash.com/photo-1576091160495-112405c3e149?w=800&q=80",
+      after: "https://images.unsplash.com/photo-1576091160490-112405c3e149?w=800&q=80",
+      label: "Clinic Lift",
+    },
+    3: {
+      before: "https://images.unsplash.com/photo-1576091160485-112405c3e149?w=800&q=80",
+      after: "https://images.unsplash.com/photo-1576091160480-112405c3e149?w=800&q=80",
+      label: "Obsidian",
+    },
+    4: {
+      before: "https://images.unsplash.com/photo-1576091160475-112405c3e149?w=800&q=80",
+      after: "https://images.unsplash.com/photo-1576091160470-112405c3e149?w=800&q=80",
+      label: "Veil",
+    },
+    5: {
+      before: "https://images.unsplash.com/photo-1576091160465-112405c3e149?w=800&q=80",
+      after: "https://images.unsplash.com/photo-1576091160460-112405c3e149?w=800&q=80",
+      label: "Ember",
+    },
+    6: {
+      before: "https://images.unsplash.com/photo-1576091160455-112405c3e149?w=800&q=80",
+      after: "https://images.unsplash.com/photo-1576091160450-112405c3e149?w=800&q=80",
+      label: "Horizon",
+    },
+    7: {
+      before: "https://images.unsplash.com/photo-1576091160445-112405c3e149?w=800&q=80",
+      after: "https://images.unsplash.com/photo-1576091160440-112405c3e149?w=800&q=80",
+      label: "Refine",
+    },
+    8: {
+      before: "https://images.unsplash.com/photo-1576091160435-112405c3e149?w=800&q=80",
+      after: "https://images.unsplash.com/photo-1576091160430-112405c3e149?w=800&q=80",
+      label: "Radiance",
+    },
+    9: {
+      before: "https://images.unsplash.com/photo-1576091160425-112405c3e149?w=800&q=80",
+      after: "https://images.unsplash.com/photo-1576091160420-112405c3e149?w=800&q=80",
+      label: "Clarity",
+    },
   },
   og: {
     cover: "/images/og/og-cover.svg",
@@ -52,6 +135,7 @@ export type Treatment = {
   duration: string;
   description: string;
   poetry: string;
+  image?: string; // Image URL - uses placeholder if not provided
 };
 
 export const treatments: Treatment[] = [
@@ -64,6 +148,7 @@ export const treatments: Treatment[] = [
     description:
       "Care for fungal infections, vitiligo, pigmentation, psoriasis, eczema, acne, hives and other medical skin concerns.",
     poetry: "A systematic response to what the skin is asking for.",
+    image: assets.treatments["clinical-dermatology"],
   },
   {
     slug: "hair-treatments",
@@ -74,6 +159,7 @@ export const treatments: Treatment[] = [
     description:
       "Programs for hair fall, dandruff, brittle hair, alopecia, PRP and scalp health in women and men.",
     poetry: "Strength from root to strand.",
+    image: assets.treatments["hair-treatments"],
   },
   {
     slug: "hair-transplantation",
@@ -84,6 +170,7 @@ export const treatments: Treatment[] = [
     description:
       "Restoration for scalp baldness, beard and moustache, eyebrows and sparse facial hair with precision grafting.",
     poetry: "Density returned with subtle design.",
+    image: assets.treatments["hair-transplantation"],
   },
   {
     slug: "cosmetology",
@@ -94,6 +181,7 @@ export const treatments: Treatment[] = [
     description:
       "Anti-ageing, chemical peels, laser hair removal, pigmentation treatments, microdermabrasion, Botox, fillers and skin tightening.",
     poetry: "Beauty that feels honest and intact.",
+    image: assets.treatments["cosmetology"],
   },
   {
     slug: "skin-surgeries",
@@ -104,6 +192,7 @@ export const treatments: Treatment[] = [
     description:
       "Cryotherapy, wart removal, skin tag and corn removal, acne scar surgery and vitiligo procedures.",
     poetry: "Precision surgery with a careful hand.",
+    image: assets.treatments["skin-surgeries"],
   },
   {
     slug: "pediatric-dermatology",
@@ -114,6 +203,7 @@ export const treatments: Treatment[] = [
     description:
       "Gentle care for white spots, rashes, diaper dermatitis, birthmarks, infections and molluscum in children.",
     poetry: "Comfort for the smallest skin.",
+    image: assets.treatments["pediatric-dermatology"],
   },
   {
     slug: "systemic-dermatology",
@@ -124,6 +214,7 @@ export const treatments: Treatment[] = [
     description:
       "Dermatology for skin concerns linked to pregnancy, diabetes, thyroid, kidney, digestive and cancer-related conditions.",
     poetry: "The skin as a mirror of the whole body.",
+    image: assets.treatments["systemic-dermatology"],
   },
   {
     slug: "genital-dermatology",
@@ -134,6 +225,7 @@ export const treatments: Treatment[] = [
     description:
       "Care for premature ejaculation, erectile dysfunction, genital ulcers, STDs and other intimate dermatological concerns.",
     poetry: "Private concerns treated with respect.",
+    image: assets.treatments["genital-dermatology"],
   },
 ];
 
@@ -141,7 +233,7 @@ export const doctors = [
   {
     name: "Dr. Nidheesh Agarwal",
     role: "M.B.B.S., M.D. (Dermatology) · Dermatologist · Cosmetologist · Hair Transplant Surgeon",
-    image: assets.doctors.placeholder,
+    image: assets.doctors["nidheesh-agarwal"],
     bio: "Dr. Nidheesh Agarwal is a dermatologist, cosmetologist and hair transplant surgeon based in Udaipur. He completed his M.B.B.S. and M.D. in Dermatology from RNT Medical College, Udaipur. During his post-graduation he presented his research on chicken pox scars at the 2013 World Congress of Cosmetic Dermatology in Greece and received the Global Education Award from the International Society of Dermatology in 2014. After serving as Assistant Professor at Geetanjali Medical College for four years, he founded AURA Skin and Hair Clinic to provide holistic, affordable solutions for skin and hair concerns.",
   },
 ];

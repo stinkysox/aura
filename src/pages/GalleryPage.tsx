@@ -1,12 +1,6 @@
 import { Section } from "@/components/Section";
-import { Plate } from "@/components/Placeholder";
 import { Reveal, FadeIn } from "@/lib/motion";
-
-const items = Array.from({ length: 9 }).map((_, i) => ({
-  i,
-  tone: (["bone", "stone", "skin", "graphite"] as const)[i % 4],
-  label: ["Luminance", "Clinic Lift", "Obsidian", "Veil", "Ember", "Horizon"][i % 6],
-}));
+import { galleryItems } from "@/content/gallery";
 
 export function GalleryPage() {
   return (
@@ -22,9 +16,9 @@ export function GalleryPage() {
       </Section>
       <section className="px-6 md:px-12">
         <div className="mx-auto grid max-w-[1700px] grid-cols-12 gap-6 md:gap-10">
-          {items.map((it, idx) => (
+          {galleryItems.map((item, idx) => (
             <FadeIn
-              key={it.i}
+              key={item.id}
               delay={(idx % 3) * 0.08}
               className={
                 idx % 5 === 0
@@ -38,13 +32,29 @@ export function GalleryPage() {
                         : "col-span-12 md:col-span-4"
               }
             >
-              <Plate
-                tone={it.tone}
-                ratio={idx % 2 ? "4/5" : "3/4"}
-                label={`${it.label} · before / after`}
-              />
+              <div className="group relative overflow-hidden rounded-3xl border border-border bg-bone">
+                {/* Before/After Toggle with Hover */}
+                <img
+                  src={item.before}
+                  alt={`${item.label} — Before`}
+                  className="h-full w-full object-cover transition-opacity duration-300 group-hover:opacity-0"
+                  loading="lazy"
+                />
+                <img
+                  src={item.after}
+                  alt={`${item.label} — After`}
+                  className="absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                  loading="lazy"
+                />
+
+                {/* Label Overlay */}
+                <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-[10px] uppercase tracking-[0.25em] text-ink">
+                  <span className="opacity-70">{item.label}</span>
+                  <span className="opacity-50">— before / after</span>
+                </div>
+              </div>
               <p className="mt-3 text-xs uppercase tracking-[0.22em] text-graphite">
-                N° {String(idx + 1).padStart(2, "0")} · {it.label}
+                N° {String(item.id).padStart(2, "0")} · {item.label}
               </p>
             </FadeIn>
           ))}
@@ -53,4 +63,3 @@ export function GalleryPage() {
     </div>
   );
 }
-
