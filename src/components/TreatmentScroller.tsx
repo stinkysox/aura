@@ -1,428 +1,182 @@
 import { useRef } from "react";
 import { gsap, ScrollTrigger } from "@/lib/motion";
 import { useGSAP } from "@gsap/react";
-import { assets, treatments } from "@/content/site";
+import { treatments } from "@/content/site";
 import { Link } from "react-router-dom";
 
-export function TreatmentScroller() {
-  const sectionRef = useRef<HTMLElement>(null);
+// Premium clinic-themed placeholders to test the scaling and parallax depth
+const PLACEHOLDER_IMAGES = [
+  "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=1000&q=80", // Facial Therapy
+  "https://images.unsplash.com/photo-1608248597481-496100c8c836?auto=format&fit=crop&w=1000&q=80", // Serum/Formulation
+  "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=1000&q=80", // Clinical Wellness
+  "https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&w=1000&q=80", // Scalp/Hair Care
+];
 
+export function TreatmentScroller() {
+  const containerRef = useRef<HTMLDivElement>(null);
   const cardsRef = useRef<(HTMLAnchorElement | null)[]>([]);
 
-  useGSAP(() => {
-    // We don't need gsap.context anymore since useGSAP handles it
-    const cards = cardsRef.current.filter(Boolean);
+  useGSAP(
+    () => {
+      const cards = cardsRef.current.filter(Boolean);
+      if (!cards.length) return;
 
-      // =========================
-      // INITIAL STATES
-      // =========================
-
-      gsap.set(cards, {
-        position: "absolute",
-        left: "50%",
-        top: "50%",
-        xPercent: -50,
-        yPercent: -50,
-        transformPerspective: 1600,
-        transformStyle: "preserve-3d",
-        willChange: "transform, opacity",
-        force3D: true,
-      });
-
-      // =========================
-      // MASTER TIMELINE
-      // =========================
-
-      const tl = gsap.timeline({
-        defaults: {
-          ease: "power3.out",
-        },
-
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top top",
-          end: `+=${cards.length * 1100}`,
-          scrub: 1,
-          pin: true,
-          anticipatePin: 1,
-          invalidateOnRefresh: true,
-        },
-      });
-
-      // =========================
-      // CARD CHOREOGRAPHY
-      // =========================
-
-      const slideX = Math.min(260, window.innerWidth * 0.42);
-      const exitX = Math.min(220, window.innerWidth * 0.36);
-
-      cards.forEach((card, index) => {
-        if (!card) return;
-
-        const direction = index % 2 === 0 ? 1 : -1;
-
-        // ===== ENTRY =====
-
-        tl.fromTo(
+      cards.forEach((card) => {
+        // Reveal and scale the card container smoothly as it scrolls into view
+        gsap.fromTo(
           card,
-          {
-            x: slideX * direction,
-            y: 50,
-            rotateY: 10 * direction,
-            rotateZ: 1.5 * direction,
-            scale: 0.96,
-            opacity: 0,
-            filter: "blur(2px)",
+          { 
+            opacity: 0, 
+            y: 60, 
+            scale: 0.96 
           },
           {
-            x: 0,
+            opacity: 1,
             y: 0,
-            rotateY: 0,
-            rotateZ: 0,
             scale: 1,
-            opacity: 1,
-            filter: "blur(0px)",
-            duration: 1,
-          },
-          index * 1.3
+            ease: "power1.out",
+            scrollTrigger: {
+              trigger: card,
+              start: "top 88%", 
+              end: "top 55%",   
+              scrub: 0.8,       
+              invalidateOnRefresh: true,
+            },
+          }
         );
 
-        // ===== READING WINDOW =====
-
-        tl.to(
-          card,
-          {
-            opacity: 1,
-            scale: 1,
-            filter: "blur(0px)",
-            duration: 1.2,
-          },
-          index * 1.3 + 0.5
-        );
-
-        // ===== EXIT =====
-
-        tl.to(
-          card,
-          {
-            x: -exitX * direction,
-            y: -40,
-            rotateY: -6 * direction,
-            rotateZ: -1 * direction,
-            scale: 0.98,
-            opacity: 0,
-            filter: "blur(1px)",
-            duration: 1,
-          },
-          index * 1.3 + 1.9
-        );
-      });
-
-      // =========================
-      // FLOATING AMBIENT MOTION
-      // =========================
-
-      cards.forEach((card, index) => {
-        if (!card) return;
-
-        gsap.to(card, {
-          y: `+=${8 + index * 2}`,
-          duration: 4 + index * 0.3,
-          repeat: -1,
-          yoyo: true,
-          ease: "sine.inOut",
-        });
-      });
-
-      // =========================
-      // BACKGROUND TYPOGRAPHY
-      // =========================
-
-      gsap.to(".treatment-number", {
-        yPercent: -10,
-        ease: "none",
-
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top bottom",
-          end: "bottom top",
-          scrub: true,
-        },
+        // Counter-parallax movement on the inner image layers
+        const img = card.querySelector(".parallax-img");
+        if (img) {
+          gsap.fromTo(
+            img,
+            { yPercent: -8 },
+            {
+              yPercent: 8,
+              ease: "none",
+              scrollTrigger: {
+                trigger: card,
+                start: "top bottom",
+                end: "bottom top",
+                scrub: true,
+              },
+            }
+          );
+        }
       });
     },
-    { scope: sectionRef }
+    { scope: containerRef }
   );
 
   return (
-    <section
-      ref={sectionRef}
-      className="relative h-screen overflow-hidden bg-[#f5f1eb]"
-    >
-      {/* ========================= */}
-      {/* ATMOSPHERIC BACKGROUND */}
-      {/* ========================= */}
-
+    <section ref={containerRef} className="relative bg-[#f5f1eb] py-24 md:py-36">
+      {/* STATIC BACKGROUND EMBELLISHMENTS */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        {/* RADIAL GLOW */}
-
-        <div
-          className="
-            absolute
-            left-1/2
-            top-1/2
-            h-[70vw]
-            w-[70vw]
-            -translate-x-1/2
-            -translate-y-1/2
-            rounded-full
-            opacity-50
-          "
-          style={{
-            background: `
-              radial-gradient(
-                circle,
-                rgba(212,175,55,0.08),
-                transparent 70%
-              )
-            `,
-          }}
-        />
-
-        {/* CINEMATIC GRADIENT */}
-
-        <div
-          className="absolute inset-0"
-          style={{
-            background: `
-              linear-gradient(
-                to bottom,
-                rgba(255,255,255,0.72),
-                rgba(245,241,235,0.96)
-              )
-            `,
-          }}
-        />
-
-        {/* GIANT TYPOGRAPHY */}
-
-        <div
-          className="
-            treatment-number
-            absolute
-            left-[5vw]
-            top-[10vh]
-            font-serif
-            text-[18vw]
-            leading-none
-            tracking-[-0.05em]
-            text-black/[0.03]
-          "
-        >
+        <div className="sticky top-[10vh] left-[5vw] font-serif text-[16vw] leading-none tracking-[-0.05em] text-black/[0.015]">
           02
-        </div>
-
-        <div
-          className="
-            treatment-number
-            absolute
-            right-0
-            bottom-[5vh]
-            max-w-full
-            truncate
-            px-[5vw]
-            font-serif
-            text-[12vw]
-            italic
-            leading-none
-            text-black/[0.03]
-          "
-        >
-          Treatments
         </div>
       </div>
 
-      {/* ========================= */}
-      {/* TOP BAR */}
-      {/* ========================= */}
-
-      <div className="relative z-20 flex min-w-0 items-center justify-between gap-4 px-6 pb-12 pt-10 md:px-12">
-        <span className="min-w-0 truncate text-[10px] uppercase tracking-[0.2em] text-black/50">
-          N° 02 · The Catalogue
-        </span>
-
-        <span className="shrink-0 text-[10px] uppercase tracking-[0.2em] text-black/50">
+      {/* HEADER SECTION */}
+      <div className="relative z-10 mx-auto mb-20 max-w-5xl px-6 flex items-end justify-between gap-4 md:mb-32 md:px-12">
+        <div className="flex flex-col gap-2">
+          <span className="text-[10px] uppercase tracking-[0.25em] text-black/40">
+            N° 02 · The Catalogue
+          </span>
+          <h2 className="font-serif text-4xl font-light tracking-[-0.02em] text-black md:text-5xl">
+            Selected Treatments
+          </h2>
+        </div>
+        <span className="text-[10px] uppercase tracking-[0.2em] text-black/50 pb-1">
           {treatments.length} compositions
         </span>
       </div>
 
-      {/* ========================= */}
-      {/* STAGE */}
-      {/* ========================= */}
+      {/* EDITORIAL VERTICAL STACK */}
+      <div className="mx-auto flex max-w-5xl flex-col gap-24 px-6 md:gap-40 md:px-12">
+        {treatments.map((t, index) => {
+          const isEven = index % 2 === 0;
+          // Cycles seamlessly through placeholder images array
+          const sampleImgSrc = PLACEHOLDER_IMAGES[index % PLACEHOLDER_IMAGES.length];
 
-      <div
-        className="relative h-[calc(100vh-120px)] w-full max-w-full overflow-hidden"
-        style={{
-          perspective: "1600px",
-        }}
-      >
-        {treatments.map((t, index) => (
-          <Link
-            key={t.slug}
-            to={`/treatments/${t.slug}`}
-            ref={(el) => {
-              cardsRef.current[index] = el;
-            }}
-            className="
-              group
-              absolute
-              left-1/2
-              top-1/2
-              w-[88vw]
-              max-w-[760px]
-              -translate-x-1/2
-              -translate-y-1/2
-              overflow-hidden
-              rounded-[2.5rem]
-              border
-              border-black/[0.06]
-              bg-white/[0.78]
-              p-8
-              shadow-[0_20px_70px_rgba(0,0,0,0.06)]
-              backdrop-blur-md
-              md:p-14
-            "
-          >
-            <div className="mb-7 overflow-hidden rounded-3xl border border-black/10 bg-white/50">
-              <img
-                src={assets.treatments.placeholder}
-                alt={`${t.name} — Skin and Hair Clinic in Udaipur`}
-                className="h-44 w-full object-cover md:h-56"
-                loading="lazy"
-              />
-            </div>
-            {/* ========================= */}
-            {/* SUBTLE GLOW */}
-            {/* ========================= */}
-
-            <div
-              className="
-                absolute
-                inset-0
-                opacity-0
-                transition-opacity
+          return (
+            <Link
+              key={t.slug}
+              to={`/treatments/${t.slug}`}
+              ref={(el) => {
+                cardsRef.current[index] = el;
+              }}
+              className={`
+                group
+                relative
+                flex
+                w-full
+                flex-col
+                overflow-hidden
+                rounded-[2rem]
+                border
+                border-black/[0.04]
+                bg-white/90
+                shadow-[0_10px_40px_rgba(0,0,0,0.02)]
+                will-change-transform
+                transition-shadow
                 duration-700
-                group-hover:opacity-100
-              "
+                hover:shadow-[0_30px_60px_rgba(0,0,0,0.06)]
+                md:h-[460px]
+                ${isEven ? "md:flex-row" : "md:flex-row-reverse"}
+              `}
             >
-              <div
-                className="
-                  absolute
-                  inset-0
-                  rounded-[2.5rem]
-                "
-                style={{
-                  background: `
-                    radial-gradient(
-                      circle at top,
-                      rgba(212,175,55,0.06),
-                      transparent 60%
-                    )
-                  `,
-                }}
-              />
-            </div>
-
-            {/* ========================= */}
-            {/* CONTENT */}
-            {/* ========================= */}
-
-            <div className="relative z-10">
-              {/* META */}
-
-              <div className="mb-10 flex items-baseline justify-between border-b border-black/[0.06] pb-6">
-                <span className="font-serif text-sm italic text-black/60">
-                  N° {t.number}
-                </span>
-
-                <span className="text-[10px] uppercase tracking-[0.3em] text-black/45">
-                  {t.family} · {t.duration}
-                </span>
+              {/* IMAGE COLUMN (With overflow crop for parallax effect) */}
+              <div className="relative w-full shrink-0 overflow-hidden bg-[#ebe7e0] md:w-[42%]">
+                <div className="relative h-[260px] w-full scale-110 overflow-hidden md:h-full">
+                  <img
+                    src={sampleImgSrc}
+                    alt={`${t.name} — Clinic Formulation`}
+                    className="parallax-img absolute inset-0 h-[120%] w-full object-cover will-change-transform"
+                    loading="lazy"
+                  />
+                </div>
+                <div className="absolute inset-0 bg-black/[0.01] transition-colors duration-500 group-hover:bg-transparent" />
               </div>
 
-              {/* TITLE */}
+              {/* CONTENT COLUMN */}
+              <div className="relative flex w-full flex-col justify-center p-8 md:w-[58%] md:p-12 lg:p-16">
+                {/* CARD META */}
+                <div className="mb-6 flex items-baseline justify-between border-b border-black/[0.06] pb-4">
+                  <span className="font-serif text-xs italic text-black/50">
+                    Composition N° {t.number}
+                  </span>
+                  <span className="text-[9px] uppercase tracking-[0.25em] text-black/40">
+                    {t.family} · {t.duration}
+                  </span>
+                </div>
 
-              <h3
-                className="
-                  mb-8
-                  max-w-[12ch]
-                  font-serif
-                  text-5xl
-                  font-light
-                  leading-[0.92]
-                  tracking-[-0.04em]
-                  text-black
-                  transition-transform
-                  duration-700
-                  md:text-7xl
-                  group-hover:translate-x-1
-                "
-              >
-                {t.name}
-              </h3>
+                {/* TITLE */}
+                <h3 className="mb-4 font-serif text-3xl font-light leading-[1.05] tracking-[-0.03em] text-black transition-transform duration-500 group-hover:translate-x-1 md:text-4xl lg:text-5xl">
+                  {t.name}
+                </h3>
 
-              {/* POETRY */}
+                {/* POETRY */}
+                <p className="mb-5 font-serif text-lg italic leading-snug text-black/65 md:text-xl">
+                  "{t.poetry}"
+                </p>
 
-              <p
-                className="
-                  max-w-[18ch]
-                  font-serif
-                  text-2xl
-                  italic
-                  leading-snug
-                  text-black/65
-                  md:text-3xl
-                "
-              >
-                "{t.poetry}"
-              </p>
+                {/* DESCRIPTION */}
+                <p className="max-w-md text-sm leading-relaxed text-black/55 line-clamp-3">
+                  {t.description}
+                </p>
 
-              {/* DESCRIPTION */}
-
-              <p
-                className="
-                  mt-8
-                  max-w-xl
-                  text-base
-                  leading-relaxed
-                  text-black/62
-                  md:text-lg
-                "
-              >
-                {t.description}
-              </p>
-
-              {/* FOOTER */}
-
-              <div className="mt-12 flex items-center gap-4">
-                <span
-                  className="
-                    inline-block
-                    h-px
-                    w-12
-                    bg-black/30
-                    transition-all
-                    duration-500
-                    group-hover:w-20
-                  "
-                />
-
-                <span className="text-[11px] uppercase tracking-[0.24em] text-black">
-                  Read Protocol
-                </span>
+                {/* INTERACTIVE LINK FOOTER */}
+                <div className="mt-8 flex items-center gap-4 pt-2">
+                  <span className="text-[10px] uppercase tracking-[0.2em] text-black">
+                    Explore Protocol
+                  </span>
+                  <span className="inline-block h-[1px] w-8 bg-black/20 transition-all duration-500 ease-out group-hover:w-16 group-hover:bg-black/60" />
+                </div>
               </div>
-            </div>
-          </Link>
-        ))}
+            </Link>
+          );
+        })}
       </div>
     </section>
   );
