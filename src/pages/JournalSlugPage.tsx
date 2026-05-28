@@ -1,40 +1,22 @@
-import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { Link, useParams } from "react-router-dom";
 import { Section } from "@/components/Section";
 import { Plate } from "@/components/Placeholder";
 import { Reveal, FadeIn } from "@/lib/motion";
 import { journal } from "@/content/site";
+import { NotFoundPage } from "./NotFoundPage";
 
-export const Route = createFileRoute("/journal/$slug")({
-  loader: ({ params }) => {
-    const j = journal.find((x) => x.slug === params.slug);
-    if (!j) throw notFound();
-    return j;
-  },
-  head: ({ loaderData }) => ({
-    meta: [
-      { title: `${loaderData?.title ?? "Journal"} — AURA Skin and Hair Clinic` },
-      { name: "description", content: loaderData?.excerpt ?? "" },
-      { property: "og:title", content: `${loaderData?.title ?? "Journal"} — AURA Skin and Hair Clinic` },
-      { property: "og:description", content: loaderData?.excerpt ?? "" },
-    ],
-  }),
-  notFoundComponent: () => (
-    <div className="flex min-h-screen items-center justify-center">
-      <Link to="/journal" className="font-serif text-3xl underline">Return to journal</Link>
-    </div>
-  ),
-  errorComponent: ({ error }) => (
-    <div className="flex min-h-screen items-center justify-center"><p>{error.message}</p></div>
-  ),
-  component: Entry,
-});
+export function JournalSlugPage() {
+  const { slug } = useParams<{ slug: string }>();
+  const j = journal.find((x) => x.slug === slug);
 
-function Entry() {
-  const j = Route.useLoaderData();
+  if (!j) return <NotFoundPage />;
+
   return (
     <article className="pt-40">
       <Section eyebrow={`${j.date} · ${j.read}`} num="Journal">
-        <h1 className="display-xl max-w-6xl"><Reveal>{j.title}</Reveal></h1>
+        <h1 className="display-xl max-w-6xl">
+          <Reveal>{j.title}</Reveal>
+        </h1>
       </Section>
       <section className="px-6 md:px-12">
         <FadeIn className="mx-auto max-w-[1700px]">
@@ -50,13 +32,21 @@ function Entry() {
             "What follows is a short defence of restraint, written for a season — winter — when the temptation to over-correct is highest, and the reward for patience is greatest.",
             "Begin with one thing. Hold it for six weeks. Read the surface again. Then, only then, consider the second.",
           ].map((p, i) => (
-            <p key={i} className="text-lg leading-relaxed text-foreground/85">{p}</p>
+            <p key={i} className="text-lg leading-relaxed text-foreground/85">
+              {p}
+            </p>
           ))}
         </div>
       </section>
       <Section>
-        <Link to="/journal" className="text-[12px] uppercase tracking-[0.22em] border-b border-ink pb-1">← Return to journal</Link>
+        <Link
+          to="/journal/"
+          className="border-b border-ink pb-1 text-[12px] uppercase tracking-[0.22em]"
+        >
+          ← Return to journal
+        </Link>
       </Section>
     </article>
   );
 }
+

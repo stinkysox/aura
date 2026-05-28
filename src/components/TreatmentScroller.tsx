@@ -1,7 +1,7 @@
 import { useLayoutEffect, useRef } from "react";
 import { gsap, ScrollTrigger } from "@/lib/motion";
 import { treatments } from "@/content/site";
-import { Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 
 export function TreatmentScroller() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -262,8 +262,7 @@ export function TreatmentScroller() {
         {treatments.map((t, index) => (
           <Link
             key={t.slug}
-            to="/treatments/$slug"
-            params={{ slug: t.slug }}
+            to={`/treatments/${t.slug}`}
             ref={(el) => {
               cardsRef.current[index] = el;
             }}

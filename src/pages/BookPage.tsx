@@ -1,21 +1,8 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { Section } from "@/components/Section";
 import { Reveal, FadeIn } from "@/lib/motion";
 import { treatments } from "@/content/site";
 
-export const Route = createFileRoute("/book")({
-  head: () => ({
-    meta: [
-      { title: "Book a Consultation — AURA Skin and Hair Clinic" },
-      { name: "description", content: "Begin a quiet conversation with the skin." },
-      { property: "og:title", content: "Book a Consultation — AURA Skin and Hair Clinic" },
-      { property: "og:description", content: "Ninety minutes, in private." },
-    ],
-  }),
-  component: Book,
-});
-
-function Book() {
+export function BookPage() {
   return (
     <div className="pt-40">
       <Section eyebrow="Begin" num="Ninety minutes">
@@ -31,16 +18,26 @@ function Book() {
       <section className="px-6 md:px-12 pb-40">
         <div className="mx-auto max-w-3xl">
           <form className="space-y-12" onSubmit={(e) => e.preventDefault()}>
-            <Row label="Your name"><input className="input" /></Row>
-            <Row label="Email"><input type="email" className="input" /></Row>
-            <Row label="Phone"><input type="tel" className="input" /></Row>
+            <Row label="Your name">
+              <input className="input" />
+            </Row>
+            <Row label="Email">
+              <input type="email" className="input" />
+            </Row>
+            <Row label="Phone">
+              <input type="tel" className="input" />
+            </Row>
             <Row label="A composition you are drawn to">
               <select className="input">
                 <option value="">— No preference</option>
-                {treatments.map((t) => <option key={t.slug}>{t.name}</option>)}
+                {treatments.map((t) => (
+                  <option key={t.slug}>{t.name}</option>
+                ))}
               </select>
             </Row>
-            <Row label="Preferred week"><input type="date" className="input" /></Row>
+            <Row label="Preferred week">
+              <input type="date" className="input" />
+            </Row>
             <Row label="A short note (optional)">
               <textarea rows={4} className="input resize-none" />
             </Row>
@@ -71,3 +68,4 @@ function Row({ label, children }: { label: string; children: React.ReactNode }) 
     </FadeIn>
   );
 }
+

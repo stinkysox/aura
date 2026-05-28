@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { CinematicHero, HeroCTA } from "@/components/Hero";
@@ -8,27 +8,7 @@ import { Plate } from "@/components/Placeholder";
 import { Reveal, FadeIn } from "@/lib/motion";
 import { philosophy, technology, testimonials, doctors } from "@/content/site";
 
-export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title: "AURA Skin and Hair Clinic — A holistic skin and hair center · Udaipur" },
-      {
-        name: "description",
-        content:
-          "A holistic center for skin and hair in Udaipur. Thoughtful care, medical and aesthetic.",
-      },
-      { property: "og:title", content: "AURA Skin and Hair Clinic — Holistic Skin & Hair Care" },
-      {
-        property: "og:description",
-        content:
-          "AURA Skin and Hair Clinic offers thoughtful, considered skin and hair care in Udaipur.",
-      },
-    ],
-  }),
-  component: Home,
-});
-
-function Home() {
+export function HomePage() {
   return (
     <div>
       <CinematicHero />
@@ -204,3 +184,4 @@ function TechnologySection() {
     </section>
   );
 }
+

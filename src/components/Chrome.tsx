@@ -1,4 +1,4 @@
-import { Link, useRouterState } from "@tanstack/react-router";
+import { Link, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { site, nav } from "@/content/site";
@@ -7,7 +7,8 @@ import { Magnetic } from "@/lib/motion";
 export function Nav() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const path = useRouterState({ select: (s) => s.location.pathname });
+  const location = useLocation();
+  const path = location.pathname;
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -36,8 +37,9 @@ export function Nav() {
               <Link
                 key={n.to}
                 to={n.to}
-                className="relative text-[13px] tracking-wide text-foreground/80 transition-colors hover:text-foreground"
-                activeProps={{ className: "text-foreground" }}
+                className={`relative text-[13px] tracking-wide transition-colors hover:text-foreground ${
+                  path === n.to ? "text-foreground" : "text-foreground/80"
+                }`}
               >
                 {n.label}
               </Link>

@@ -1,30 +1,19 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { Section } from "@/components/Section";
 import { Reveal, FadeIn } from "@/lib/motion";
 import { faqs } from "@/content/site";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-export const Route = createFileRoute("/faq")({
-  head: () => ({
-    meta: [
-      { title: "Questions — AURA Skin and Hair Clinic" },
-      { name: "description", content: "Considered answers." },
-      { property: "og:title", content: "Questions — AURA Skin and Hair Clinic" },
-      { property: "og:description", content: "On consultation, walk-ins, sensitive skin, imagery." },
-    ],
-  }),
-  component: FAQ,
-});
-
-function FAQ() {
+export function FaqPage() {
   const [open, setOpen] = useState<number | null>(0);
   return (
     <div className="pt-40">
       <Section eyebrow="Questions" num="Considered answers">
-        <h1 className="display-xl"><Reveal>A few things asked.</Reveal></h1>
+        <h1 className="display-xl">
+          <Reveal>A few things asked.</Reveal>
+        </h1>
       </Section>
-      <section className="px-6 md:px-12 pb-32">
+      <section className="px-6 pb-32 md:px-12">
         <div className="mx-auto max-w-4xl">
           {faqs.map((f, i) => (
             <FadeIn key={i} delay={i * 0.04}>
@@ -33,8 +22,8 @@ function FAQ() {
                 className="w-full border-t border-border py-10 text-left"
               >
                 <div className="flex items-baseline justify-between gap-6">
-                  <h2 className="font-serif text-2xl md:text-4xl tracking-tight">{f.q}</h2>
-                  <span className="text-xs uppercase tracking-[0.22em] text-graphite shrink-0">
+                  <h2 className="font-serif text-2xl tracking-tight md:text-4xl">{f.q}</h2>
+                  <span className="shrink-0 text-xs uppercase tracking-[0.22em] text-graphite">
                     {open === i ? "—" : "+"}
                   </span>
                 </div>
@@ -45,7 +34,7 @@ function FAQ() {
                       animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
                       transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-                      className="body-lg max-w-2xl mt-6 overflow-hidden"
+                      className="body-lg mt-6 max-w-2xl overflow-hidden"
                     >
                       {f.a}
                     </motion.p>
@@ -59,3 +48,4 @@ function FAQ() {
     </div>
   );
 }
+

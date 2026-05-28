@@ -1,30 +1,9 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { Section, Hairline } from "@/components/Section";
 import { Plate } from "@/components/Placeholder";
 import { Reveal, FadeIn } from "@/lib/motion";
 import { site } from "@/content/site";
 
-export const Route = createFileRoute("/about")({
-  head: () => ({
-    meta: [
-      { title: "The Clinic — AURA Skin and Hair Clinic" },
-      {
-        name: "description",
-        content:
-          "A holistic center for skin and hair in Udaipur. Inclusive care for medical and aesthetic concerns.",
-      },
-      { property: "og:title", content: "The Clinic — AURA Skin and Hair Clinic" },
-      {
-        property: "og:description",
-        content:
-          "AURA Skin and Hair Clinic offers considered, holistic solutions for skin and hair health.",
-      },
-    ],
-  }),
-  component: About,
-});
-
-function About() {
+export function AboutPage() {
   return (
     <div className="pt-40">
       <Section eyebrow="Manifesto" num="N° 00">
@@ -103,3 +82,4 @@ function About() {
     </div>
   );
 }
+

@@ -1,29 +1,9 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { Section } from "@/components/Section";
 import { Plate } from "@/components/Placeholder";
 import { Reveal, FadeIn } from "@/lib/motion";
 import { doctors } from "@/content/site";
 
-export const Route = createFileRoute("/doctors")({
-  head: () => ({
-    meta: [
-      { title: "Our Doctor — AURA Skin and Hair Clinic" },
-      {
-        name: "description",
-        content:
-          "Dr. Nidheesh Agarwal is a dermatologist, cosmetologist and hair transplant surgeon in Udaipur.",
-      },
-      { property: "og:title", content: "Our Doctor — AURA Skin and Hair Clinic" },
-      {
-        property: "og:description",
-        content: "Learn about the clinic’s founder and lead specialist.",
-      },
-    ],
-  }),
-  component: Doctors,
-});
-
-function Doctors() {
+export function DoctorsPage() {
   return (
     <div className="pt-40">
       <Section eyebrow="The Hand" num="N° 04">
@@ -56,3 +36,4 @@ function Doctors() {
     </div>
   );
 }
+

@@ -1,21 +1,8 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { Section } from "@/components/Section";
 import { Reveal, FadeIn } from "@/lib/motion";
 import { site } from "@/content/site";
 
-export const Route = createFileRoute("/contact")({
-  head: () => ({
-    meta: [
-      { title: "Contact — AURA Skin and Hair Clinic" },
-      { name: "description", content: `${site.address} · By appointment.` },
-      { property: "og:title", content: "Contact — AURA Skin and Hair Clinic" },
-      { property: "og:description", content: site.address },
-    ],
-  }),
-  component: Contact,
-});
-
-function Contact() {
+export function ContactPage() {
   return (
     <div className="pt-40">
       <Section eyebrow="Reach the clinic" num="By appointment">
@@ -24,7 +11,7 @@ function Contact() {
         </h1>
       </Section>
 
-      <section className="px-6 md:px-12 pb-32">
+      <section className="px-6 pb-32 md:px-12">
         <div className="mx-auto grid max-w-[1700px] grid-cols-12 gap-10">
           <FadeIn className="col-span-12 md:col-span-5">
             <p className="eyebrow mb-6">Clinic</p>
@@ -76,3 +63,4 @@ function Field({
     </label>
   );
 }
+
