@@ -31,7 +31,7 @@ export function Nav() {
       >
         <div className="mx-auto flex max-w-[1700px] min-w-0 items-center justify-between gap-4 px-6 md:px-12">
           <Link to="/" className="group flex min-w-0 items-baseline gap-3">
-            <span className="truncate font-serif text-lg tracking-tight sm:text-xl">
+            <span className="truncate font-serif text-xl tracking-tight sm:text-2xl">
               {site.name}
             </span>
           </Link>
@@ -41,7 +41,7 @@ export function Nav() {
               <Link
                 key={n.to}
                 to={n.to}
-                className={`relative text-[11px] tracking-widest transition-colors hover:text-foreground ${
+                className={`relative text-[13px] tracking-wide transition-colors hover:text-foreground ${
                   path === n.to ? "text-foreground" : "text-foreground/80"
                 }`}
               >
@@ -54,21 +54,21 @@ export function Nav() {
             <Magnetic>
               <Link
                 to="/book"
-                className="hidden rounded-full border border-ink/80 px-4 py-2 text-[10px] uppercase tracking-[0.2em] text-ink transition-colors hover:bg-ink hover:text-background md:inline-block"
+                className="hidden rounded-full border border-ink/80 px-5 py-2.5 text-[12px] uppercase tracking-[0.2em] text-ink transition-colors hover:bg-ink hover:text-background md:inline-block"
               >
                 Book Consultation
               </Link>
             </Magnetic>
             <button
               onClick={() => setOpen((v) => !v)}
-              className="flex h-8 w-8 flex-col items-center justify-center gap-[4px]"
+              className="flex h-10 w-10 flex-col items-center justify-center gap-[5px]"
               aria-label="Menu"
             >
               <span
-                className={`block h-px w-5 bg-ink transition-transform duration-500 ${open ? "translate-y-[2.5px] rotate-45" : ""}`}
+                className={`block h-px w-6 bg-ink transition-transform duration-500 ${open ? "translate-y-[3px] rotate-45" : ""}`}
               />
               <span
-                className={`block h-px w-5 bg-ink transition-transform duration-500 ${open ? "-translate-y-[2.5px] -rotate-45" : ""}`}
+                className={`block h-px w-6 bg-ink transition-transform duration-500 ${open ? "-translate-y-[3px] -rotate-45" : ""}`}
               />
             </button>
           </div>
@@ -101,9 +101,9 @@ export function Nav() {
                     >
                       <Link
                         to={n.to}
-                        className="block max-w-full break-words font-serif text-4xl leading-tight tracking-tight md:text-5xl lg:text-6xl"
+                        className="block max-w-full break-words font-serif text-5xl leading-tight tracking-tight md:text-7xl"
                       >
-                        <span className="mr-6 align-middle text-[10px] text-graphite">0{i + 1}</span>
+                        <span className="mr-6 align-middle text-xs text-graphite">0{i + 1}</span>
                         {n.label}
                       </Link>
                     </motion.li>
