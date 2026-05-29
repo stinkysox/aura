@@ -127,6 +127,15 @@ export const philosophy = {
   body: "We treat the surface of the body as an integrated expression of health. Every intervention at AURA begins with a diagnosis, a dialogue and a commitment to holistic, affordable care.",
 };
 
+export type Condition = {
+  slug: string;
+  name: string;
+  overview: string;
+  symptoms: string[];
+  treatments?: string;
+  image?: string;
+};
+
 export type Treatment = {
   slug: string;
   number: string;
@@ -135,8 +144,377 @@ export type Treatment = {
   duration: string;
   description: string;
   poetry: string;
+  conditions?: string[]; // Array of condition slugs related to this treatment
   image?: string; // Image URL - uses placeholder if not provided
 };
+
+/**
+ * COMPREHENSIVE CONDITIONS/PROBLEMS DATABASE
+ * These are specific skin, hair and health conditions that can be treated
+ * Link to treatments for detailed care information
+ */
+export const conditions: Condition[] = [
+  // Hair & Scalp Conditions
+  {
+    slug: "hair-fall",
+    name: "Hair Fall",
+    overview:
+      "Hair fall or alopecia can occur due to multiple factors including stress, nutritional deficiencies, hormonal changes, and genetic predisposition. We provide comprehensive diagnostic protocols and tailored treatment plans.",
+    symptoms: [
+      "Excessive hair shedding",
+      "Visible hair loss on pillow or after shower",
+      "Thinning of hair volume",
+      "Widening of hair parting",
+    ],
+    treatments:
+      "Hair treatments with specialized protocols, scalp analysis, nutritional assessment, and growth therapies.",
+  },
+  {
+    slug: "dandruff",
+    name: "Dandruff",
+    overview:
+      "Dandruff is a common scalp condition characterized by flaking and often accompanied by itching. It can result from fungal infections, dry skin, or sensitivity and requires both topical and systemic management.",
+    symptoms: [
+      "White or yellowish flakes on scalp",
+      "Scalp itching",
+      "Oily or dry scalp",
+      "Red, irritated scalp skin",
+    ],
+    treatments:
+      "Specialized shampoos, antifungal treatments, scalp therapy, and lifestyle modifications.",
+  },
+  {
+    slug: "brittle-hair",
+    name: "Brittle Hair",
+    overview:
+      "Brittle hair is fragile and prone to breakage due to loss of moisture and protein. This can result from excessive heat styling, chemical treatments, nutritional deficiencies, or environmental damage.",
+    symptoms: [
+      "Hair breaks easily",
+      "Dry, rough texture",
+      "Lack of shine",
+      "Split ends",
+      "Difficulty combing or styling",
+    ],
+    treatments:
+      "Protein treatments, moisture-sealing protocols, protective styling, and nutritional supplementation.",
+  },
+  {
+    slug: "alopecia",
+    name: "Alopecia",
+    overview:
+      "Alopecia refers to hair loss from any cause. It can be androgenetic (male/female pattern baldness), alopecia areata (patchy loss), or other forms. We provide comprehensive diagnosis and targeted treatment.",
+    symptoms: [
+      "Receding hairline",
+      "Crown baldness",
+      "Diffuse hair thinning",
+      "Circular patches of hair loss",
+      "Sudden hair shedding",
+    ],
+    treatments: "Hair treatments, PRP therapy, hair transplantation, topical and oral medications.",
+  },
+  {
+    slug: "prp-hair-therapy",
+    name: "PRP Hair Therapy",
+    overview:
+      "Platelet-Rich Plasma therapy harnesses growth factors from your own blood to stimulate hair follicles and promote natural regrowth. It's a non-invasive option for various hair loss conditions.",
+    symptoms: ["Hair thinning", "Early stage hair loss", "Need for preventive treatment"],
+    treatments: "PRP therapy is available as part of our hair treatments program.",
+  },
+  {
+    slug: "scalp-health",
+    name: "Scalp Health",
+    overview:
+      "Scalp health is fundamental to healthy hair growth. Issues range from sensitivity and inflammation to infections and excessive oiliness. We provide comprehensive scalp analysis and treatment.",
+    symptoms: ["Itching", "Redness", "Excessive oiliness or dryness", "Sensitivity", "Bad odor"],
+    treatments: "Customized scalp care, therapeutic treatments, and preventive protocols.",
+  },
+
+  // Skin Conditions
+  {
+    slug: "fungal-infections",
+    name: "Fungal Infections",
+    overview:
+      "Fungal skin infections include conditions like tinea (ringworm), candidiasis, and others. They require proper diagnosis and targeted antifungal treatment for complete resolution.",
+    symptoms: [
+      "Red, itchy patches",
+      "Circular rash patterns",
+      "Scaling or flaking",
+      "Burning sensation",
+      "Discharge in moist areas",
+    ],
+    treatments: "Antifungal treatments, topical and oral medications, hygiene protocols.",
+  },
+  {
+    slug: "vitiligo",
+    name: "Vitiligo",
+    overview:
+      "Vitiligo is a depigmentation disorder causing white patches on the skin due to loss of melanocytes. We offer both camouflage and therapeutic treatment options.",
+    symptoms: [
+      "White patches on skin",
+      "Loss of skin color",
+      "Premature graying of hair in affected areas",
+      "Light sensitivity in depigmented areas",
+    ],
+    treatments:
+      "Topical steroids, phototherapy, depigmentation, surgical grafting, cosmetic cover options.",
+  },
+  {
+    slug: "pigmentation",
+    name: "Pigmentation Issues",
+    overview:
+      "Pigmentation problems include hyperpigmentation (dark patches), hypopigmentation (light patches), and uneven tone. Causes include sun exposure, melasma, and post-inflammatory changes.",
+    symptoms: [
+      "Dark patches (melasma)",
+      "Uneven skin tone",
+      "Dark spots or sun spots",
+      "Post-acne marks",
+      "Post-inflammatory hyperpigmentation",
+    ],
+    treatments:
+      "Chemical peels, laser treatments, topical depigmenting agents, sun protection protocols.",
+  },
+  {
+    slug: "psoriasis",
+    name: "Psoriasis",
+    overview:
+      "Psoriasis is a chronic autoimmune condition causing red, scaly patches. It requires long-term management and personalized treatment protocols.",
+    symptoms: [
+      "Red, inflamed patches",
+      "Thick, silvery scales",
+      "Itching or burning",
+      "Nail changes",
+      "Joint pain",
+    ],
+    treatments: "Topical treatments, phototherapy, systemic medications, lifestyle management.",
+  },
+  {
+    slug: "eczema",
+    name: "Eczema",
+    overview:
+      "Eczema or dermatitis causes inflammation, itching, and compromised skin barrier. We provide both acute relief and long-term barrier repair strategies.",
+    symptoms: [
+      "Intense itching",
+      "Red, inflamed skin",
+      "Dry patches",
+      "Blisters",
+      "Crusting and weeping",
+    ],
+    treatments:
+      "Emollients, topical steroids, antihistamines, barrier repair therapy, trigger identification.",
+  },
+  {
+    slug: "acne",
+    name: "Acne",
+    overview:
+      "Acne is a common inflammatory condition affecting hair follicles and sebaceous glands. We treat active acne, post-inflammatory marks, and prevent future breakouts.",
+    symptoms: [
+      "Comedones (blackheads/whiteheads)",
+      "Papules and pustules",
+      "Nodules or cysts",
+      "Oily skin",
+      "Post-acne scars",
+    ],
+    treatments:
+      "Topical treatments, oral medications, chemical peels, laser therapy, extraction and drainage.",
+  },
+  {
+    slug: "hives",
+    name: "Hives/Urticaria",
+    overview:
+      "Hives are raised, itchy welts on the skin caused by histamine release. They can be acute or chronic and require identifying underlying triggers.",
+    symptoms: [
+      "Red or pink welts",
+      "Intense itching",
+      "Welts that move around",
+      "Angioedema (swelling)",
+      "Variable appearance",
+    ],
+    treatments:
+      "Antihistamines, topical treatments, trigger identification and avoidance, systemic management.",
+  },
+
+  // Anti-aging & Aesthetic Concerns
+  {
+    slug: "anti-aging",
+    name: "Anti-Aging",
+    overview:
+      "Anti-aging treatments address fine lines, wrinkles, loss of volume, and skin laxity. We provide both preventive and restorative options.",
+    symptoms: [
+      "Fine lines and wrinkles",
+      "Loss of volume",
+      "Sagging skin",
+      "Age spots",
+      "Dull complexion",
+    ],
+    treatments:
+      "Botox, fillers, chemical peels, laser treatments, radiofrequency, skincare protocols.",
+  },
+  {
+    slug: "laser-hair-removal",
+    name: "Laser Hair Removal",
+    overview:
+      "Laser hair removal permanently reduces body hair using targeted light energy. It's safe, effective, and works on various skin and hair types.",
+    symptoms: ["Unwanted body or facial hair"],
+    treatments: "Laser hair removal treatments with multiple sessions.",
+  },
+  {
+    slug: "microdermabrasion",
+    name: "Microdermabrasion",
+    overview:
+      "Microdermabrasion is a mechanical exfoliation treatment that removes dead skin cells and promotes cell renewal for smoother, brighter skin.",
+    symptoms: ["Dull skin", "Surface irregularities", "Fine lines", "Acne scars"],
+    treatments: "Microdermabrasion sessions, may be combined with other treatments.",
+  },
+  {
+    slug: "skin-tightening",
+    name: "Skin Tightening",
+    overview:
+      "Skin tightening treatments use radiofrequency, ultrasound, or laser technology to stimulate collagen and improve skin elasticity.",
+    symptoms: ["Loose or sagging skin", "Loss of elasticity", "Fine lines"],
+    treatments: "Radiofrequency, ultrasound, laser treatments.",
+  },
+
+  // Skin Procedures
+  {
+    slug: "wart-removal",
+    name: "Wart Removal",
+    overview:
+      "Warts are viral infections of the skin. We provide multiple removal options including cryotherapy and surgical techniques.",
+    symptoms: ["Hard growths on skin", "Rough texture", "May bleed if traumatized"],
+    treatments: "Cryotherapy (freezing), topical treatments, surgical removal.",
+  },
+  {
+    slug: "skin-tag-removal",
+    name: "Skin Tag Removal",
+    overview:
+      "Skin tags are benign growths that can be safely removed for cosmetic or comfort reasons.",
+    symptoms: ["Small, soft growths", "Usually on neck, armpits, groin"],
+    treatments: "Surgical removal, cauterization, ligation.",
+  },
+  {
+    slug: "corn-removal",
+    name: "Corn Removal",
+    overview:
+      "Corns are thickened areas of skin caused by pressure and friction. We provide effective removal and prevention strategies.",
+    symptoms: ["Hard, painful bumps on feet", "Tenderness"],
+    treatments: "Topical removal, paring, orthotics.",
+  },
+  {
+    slug: "acne-scar-surgery",
+    name: "Acne Scar Surgery",
+    overview:
+      "Acne scars can be significantly improved through surgical and non-surgical techniques including subcision, excision, and resurfacing.",
+    symptoms: ["Atrophic scars (ice pick, boxcar)", "Hypertrophic scars"],
+    treatments: "Subcision, chemical peels, laser resurfacing, microneedling, filler injections.",
+  },
+
+  // Specialized Concerns
+  {
+    slug: "premature-ejaculation",
+    name: "Premature Ejaculation",
+    overview:
+      "Premature ejaculation is a treatable condition. We provide confidential assessment and effective topical and systemic treatments.",
+    symptoms: [
+      "Ejaculation with minimal stimulation",
+      "Lack of control",
+      "Stress and relationship concerns",
+    ],
+    treatments: "Topical anesthetics, behavioral therapy, systemic medications.",
+  },
+  {
+    slug: "erectile-dysfunction",
+    name: "Erectile Dysfunction",
+    overview:
+      "Erectile dysfunction can have multiple causes. We provide comprehensive evaluation and treatment options including topical and oral medications.",
+    symptoms: [
+      "Difficulty achieving erection",
+      "Inability to maintain erection",
+      "Reduced sexual desire",
+    ],
+    treatments: "Oral medications, topical treatments, counseling, vascular assessment.",
+  },
+  {
+    slug: "genital-ulcers",
+    name: "Genital Ulcers",
+    overview:
+      "Genital ulcers can result from infections (HSV, etc.) or other causes. Proper diagnosis and treatment prevent complications and transmission.",
+    symptoms: ["Painful ulcers", "Blisters", "Discharge", "Lymphadenopathy"],
+    treatments: "Antiviral therapy, topical treatments, pain management.",
+  },
+  {
+    slug: "stds",
+    name: "STDs - Dermatological Aspects",
+    overview:
+      "We treat the dermatological manifestations of sexually transmitted infections with confidentiality and expertise.",
+    symptoms: ["Genital lesions", "Discharge", "Warts", "Rashes"],
+    treatments: "Infection-specific treatments, contact tracing guidance, prevention education.",
+  },
+
+  // Children's Skin Conditions
+  {
+    slug: "diaper-dermatitis",
+    name: "Diaper Dermatitis",
+    overview:
+      "Diaper rash is inflammation caused by moisture, friction, and microbial overgrowth. We provide effective treatment and prevention strategies.",
+    symptoms: ["Red, inflamed skin in diaper area", "Tenderness", "May have pustules or erosions"],
+    treatments: "Moisture barriers, antifungal treatments, topical steroids, hygiene protocols.",
+  },
+  {
+    slug: "birthmarks",
+    name: "Birthmarks",
+    overview:
+      "Birthmarks can be vascular (hemangiomas, port-wine stains) or pigmented (nevi). We evaluate and offer appropriate treatment options.",
+    symptoms: ["Visible colored marks at birth or in infancy"],
+    treatments: "Laser treatments, surgical removal if needed, monitoring.",
+  },
+  {
+    slug: "molluscum",
+    name: "Molluscum Contagiosum",
+    overview:
+      "Molluscum is a viral infection common in children. While self-limited, treatment can prevent spread and hasten resolution.",
+    symptoms: ["Small, pearly bumps", "Central dimple", "Clusters", "May spread"],
+    treatments: "Topical treatments, cryotherapy, extraction, immunotherapy.",
+  },
+  {
+    slug: "white-spots",
+    name: "White Spots/Tinea Versicolor",
+    overview:
+      "White spots in children can indicate pityriasis alba, tinea versicolor, or early vitiligo. Proper diagnosis guides treatment.",
+    symptoms: ["Light-colored patches", "May be slightly scaly"],
+    treatments: "Antifungal treatments if fungal, moisturization, sun protection.",
+  },
+
+  // Other Medical Conditions
+  {
+    slug: "pregnancy-skin-changes",
+    name: "Pregnancy-Related Skin Changes",
+    overview:
+      "Pregnancy causes various skin changes including melasma, striae, and vascular changes. We provide safe treatment options for expectant mothers.",
+    symptoms: ["Melasma (chloasma)", "Stretch marks", "Vascular changes", "Increased pigmentation"],
+    treatments: "Safe topical treatments, sun protection, post-pregnancy interventions.",
+  },
+  {
+    slug: "diabetes-skin-concerns",
+    name: "Diabetes-Related Skin Concerns",
+    overview:
+      "Diabetes can manifest with various skin conditions. We coordinate with your physician for comprehensive care.",
+    symptoms: [
+      "Bacterial infections",
+      "Fungal infections",
+      "Necrobiosis lipoidica",
+      "Diabetic bullae",
+    ],
+    treatments: "Infection management, skin care, coordination with endocrinologist.",
+  },
+  {
+    slug: "thyroid-skin-effects",
+    name: "Thyroid Condition Skin Effects",
+    overview:
+      "Thyroid disorders can cause skin manifestations including myxedema, pretibial myxedema, and hair changes.",
+    symptoms: ["Myxedema", "Dry skin", "Hair loss", "Nail changes"],
+    treatments: "Coordination with endocrinologist, symptomatic skin care.",
+  },
+];
 
 export const treatments: Treatment[] = [
   {
@@ -149,6 +527,15 @@ export const treatments: Treatment[] = [
       "Care for fungal infections, vitiligo, pigmentation, psoriasis, eczema, acne, hives and other medical skin concerns.",
     poetry: "A systematic response to what the skin is asking for.",
     image: assets.treatments["clinical-dermatology"],
+    conditions: [
+      "fungal-infections",
+      "vitiligo",
+      "pigmentation",
+      "psoriasis",
+      "eczema",
+      "acne",
+      "hives",
+    ],
   },
   {
     slug: "hair-treatments",
@@ -160,6 +547,14 @@ export const treatments: Treatment[] = [
       "Programs for hair fall, dandruff, brittle hair, alopecia, PRP and scalp health in women and men.",
     poetry: "Strength from root to strand.",
     image: assets.treatments["hair-treatments"],
+    conditions: [
+      "hair-fall",
+      "dandruff",
+      "brittle-hair",
+      "alopecia",
+      "prp-hair-therapy",
+      "scalp-health",
+    ],
   },
   {
     slug: "hair-transplantation",
@@ -171,6 +566,7 @@ export const treatments: Treatment[] = [
       "Restoration for scalp baldness, beard and moustache, eyebrows and sparse facial hair with precision grafting.",
     poetry: "Density returned with subtle design.",
     image: assets.treatments["hair-transplantation"],
+    conditions: ["alopecia"],
   },
   {
     slug: "cosmetology",
@@ -182,6 +578,13 @@ export const treatments: Treatment[] = [
       "Anti-ageing, chemical peels, laser hair removal, pigmentation treatments, microdermabrasion, Botox, fillers and skin tightening.",
     poetry: "Beauty that feels honest and intact.",
     image: assets.treatments["cosmetology"],
+    conditions: [
+      "anti-aging",
+      "laser-hair-removal",
+      "pigmentation",
+      "microdermabrasion",
+      "skin-tightening",
+    ],
   },
   {
     slug: "skin-surgeries",
@@ -193,6 +596,13 @@ export const treatments: Treatment[] = [
       "Cryotherapy, wart removal, skin tag and corn removal, acne scar surgery and vitiligo procedures.",
     poetry: "Precision surgery with a careful hand.",
     image: assets.treatments["skin-surgeries"],
+    conditions: [
+      "wart-removal",
+      "skin-tag-removal",
+      "corn-removal",
+      "acne-scar-surgery",
+      "vitiligo",
+    ],
   },
   {
     slug: "pediatric-dermatology",
@@ -204,6 +614,7 @@ export const treatments: Treatment[] = [
       "Gentle care for white spots, rashes, diaper dermatitis, birthmarks, infections and molluscum in children.",
     poetry: "Comfort for the smallest skin.",
     image: assets.treatments["pediatric-dermatology"],
+    conditions: ["white-spots", "diaper-dermatitis", "birthmarks", "molluscum"],
   },
   {
     slug: "systemic-dermatology",
@@ -215,6 +626,7 @@ export const treatments: Treatment[] = [
       "Dermatology for skin concerns linked to pregnancy, diabetes, thyroid, kidney, digestive and cancer-related conditions.",
     poetry: "The skin as a mirror of the whole body.",
     image: assets.treatments["systemic-dermatology"],
+    conditions: ["pregnancy-skin-changes", "diabetes-skin-concerns", "thyroid-skin-effects"],
   },
   {
     slug: "genital-dermatology",
@@ -226,6 +638,7 @@ export const treatments: Treatment[] = [
       "Care for premature ejaculation, erectile dysfunction, genital ulcers, STDs and other intimate dermatological concerns.",
     poetry: "Private concerns treated with respect.",
     image: assets.treatments["genital-dermatology"],
+    conditions: ["premature-ejaculation", "erectile-dysfunction", "genital-ulcers", "stds"],
   },
 ];
 

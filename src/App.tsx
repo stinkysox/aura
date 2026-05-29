@@ -5,6 +5,7 @@ import { HomePage } from "@/pages/HomePage";
 import { AboutPage } from "@/pages/AboutPage";
 import { BookPage } from "@/pages/BookPage";
 import { CareersPage } from "@/pages/CareersPage";
+import { ConditionSlugPage } from "@/pages/ConditionSlugPage";
 import { ConcernsPage } from "@/pages/ConcernsPage";
 import { ContactPage } from "@/pages/ContactPage";
 import { DoctorsPage } from "@/pages/DoctorsPage";
@@ -31,6 +32,7 @@ export function App() {
             <Route path="/about" element={<AboutPage />} />
             <Route path="/book" element={<BookPage />} />
             <Route path="/careers" element={<CareersPage />} />
+            <Route path="/conditions/:slug" element={<ConditionSlugPage />} />
             <Route path="/concerns" element={<ConcernsPage />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/doctors" element={<DoctorsPage />} />

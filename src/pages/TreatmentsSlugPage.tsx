@@ -1,7 +1,7 @@
 import { Link, useParams } from "react-router-dom";
 import { Section } from "@/components/Section";
 import { Reveal, FadeIn } from "@/lib/motion";
-import { assets, treatments } from "@/content/site";
+import { assets, treatments, conditions as allConditions } from "@/content/site";
 import { NotFoundPage } from "./NotFoundPage";
 
 export function TreatmentsSlugPage() {
@@ -9,6 +9,11 @@ export function TreatmentsSlugPage() {
   const t = treatments.find((x) => x.slug === slug);
 
   if (!t) return <NotFoundPage />;
+
+  // Get the conditions related to this treatment
+  const treatmentConditions = t.conditions
+    ? allConditions.filter((c) => t.conditions?.includes(c.slug))
+    : [];
 
   return (
     <div className="pt-24">
@@ -26,7 +31,7 @@ export function TreatmentsSlugPage() {
 
       {/* MAIN SPECIFICATIONS GRID */}
       <section className="px-6 md:px-12">
-        <div className="mx-auto grid max-w-[1700px] grid-cols-12 gap-6 md:gap-10">
+        <div className="mx-auto grid max-w-425 grid-cols-12 gap-6 md:gap-10">
           {/* VISUAL REFERENCE COLUMN (Original sizes & colors intact) */}
           <FadeIn className="col-span-12 md:col-span-7">
             <div className="relative overflow-hidden rounded-[2.5rem] border border-border bg-bone">
@@ -48,13 +53,23 @@ export function TreatmentsSlugPage() {
             <p className="eyebrow mb-4">Treatment Overview</p>
             <p className="body-lg">{t.description}</p>
 
-            <p className="eyebrow mb-4 mt-12">Clinical Specifications</p>
-            <dl className="space-y-4 border-t border-border pt-6 text-sm">
-              <Row k="Session Duration" v={t.duration} />
-              <Row k="Target Category" v={t.family} />
-              <Row k="Downtime / Recovery" v="Minimal to none" />
-              <Row k="Recommended Frequency" v="Quarterly · seasonal adjustment" />
-            </dl>
+            {treatmentConditions.length > 0 && (
+              <>
+                <p className="eyebrow mb-4 mt-12">Conditions We Treat</p>
+                <ul className="space-y-2 border-t border-border pt-6">
+                  {treatmentConditions.map((condition) => (
+                    <li key={condition.slug}>
+                      <Link
+                        to={`/conditions/${condition.slug}`}
+                        className="text-sm uppercase tracking-[0.12em] text-ink underline hover:opacity-70 transition-opacity"
+                      >
+                        {condition.name} →
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </>
+            )}
 
             <Link
               to="/book"
@@ -94,16 +109,6 @@ export function TreatmentsSlugPage() {
             ))}
         </div>
       </Section>
-    </div>
-  );
-}
-
-// Restored to your precise original layout styles and key/value colors
-function Row({ k, v }: { k: string; v: string }) {
-  return (
-    <div className="flex justify-between gap-4 border-b border-border pb-4">
-      <dt className="text-graphite">{k}</dt>
-      <dd>{v}</dd>
     </div>
   );
 }
