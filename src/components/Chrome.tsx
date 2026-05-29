@@ -34,10 +34,10 @@ export function Nav() {
             <span className="truncate font-serif text-xl tracking-tight sm:text-2xl">
               {site.name}
             </span>
-            <span className="eyebrow hidden md:inline">— {site.tagline}</span>
+            <span className="eyebrow hidden 2xl:inline truncate opacity-70">— {site.tagline}</span>
           </Link>
 
-          <nav className="hidden items-center gap-10 lg:flex">
+          <nav className="hidden items-center gap-8 lg:flex xl:gap-10">
             {nav.slice(0, 5).map((n) => (
               <Link
                 key={n.to}
