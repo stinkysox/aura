@@ -18,7 +18,9 @@ export function Nav() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  useEffect(() => { setOpen(false); }, [path]);
+  useEffect(() => {
+    setOpen(false);
+  }, [path]);
 
   return (
     <>
@@ -29,7 +31,9 @@ export function Nav() {
       >
         <div className="mx-auto flex max-w-[1700px] min-w-0 items-center justify-between gap-4 px-6 md:px-12">
           <Link to="/" className="group flex min-w-0 items-baseline gap-3">
-            <span className="truncate font-serif text-xl tracking-tight sm:text-2xl">{site.name}</span>
+            <span className="truncate font-serif text-xl tracking-tight sm:text-2xl">
+              {site.name}
+            </span>
             <span className="eyebrow hidden md:inline">— {site.tagline}</span>
           </Link>
 
@@ -61,8 +65,12 @@ export function Nav() {
               className="flex h-10 w-10 flex-col items-center justify-center gap-[5px]"
               aria-label="Menu"
             >
-              <span className={`block h-px w-6 bg-ink transition-transform duration-500 ${open ? "translate-y-[3px] rotate-45" : ""}`} />
-              <span className={`block h-px w-6 bg-ink transition-transform duration-500 ${open ? "-translate-y-[3px] -rotate-45" : ""}`} />
+              <span
+                className={`block h-px w-6 bg-ink transition-transform duration-500 ${open ? "translate-y-[3px] rotate-45" : ""}`}
+              />
+              <span
+                className={`block h-px w-6 bg-ink transition-transform duration-500 ${open ? "-translate-y-[3px] -rotate-45" : ""}`}
+              />
             </button>
           </div>
         </div>
@@ -86,7 +94,11 @@ export function Nav() {
                       key={n.to}
                       initial={{ opacity: 0, y: 30 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.9, delay: 0.15 + i * 0.05, ease: [0.16, 1, 0.3, 1] }}
+                      transition={{
+                        duration: 0.9,
+                        delay: 0.15 + i * 0.05,
+                        ease: [0.16, 1, 0.3, 1],
+                      }}
                     >
                       <Link
                         to={n.to}
@@ -121,13 +133,16 @@ export function Footer() {
     <footer className="relative mt-32 border-t border-border bg-bone">
       <div className="mx-auto grid max-w-[1700px] grid-cols-1 gap-16 px-6 py-24 md:grid-cols-12 md:px-12">
         <div className="md:col-span-5">
-          <p className="eyebrow mb-4">{site.name} · {site.city}</p>
+          <p className="eyebrow mb-4">
+            {site.name} · {site.city}
+          </p>
           <h3 className="display-md max-w-md">A long quiet conversation with the skin.</h3>
           <Link
             to="/book"
-            className="mt-10 inline-block border-b border-ink pb-1 text-sm tracking-wide hover:opacity-60"
+            className="mt-10 inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3 text-sm tracking-wide text-background transition-all hover:opacity-90 active:scale-95"
           >
-            Begin a consultation →
+            Begin a consultation
+            <span className="transition-transform duration-300 hover:translate-x-1">→</span>
           </Link>
         </div>
         <div className="md:col-span-3">
@@ -144,18 +159,30 @@ export function Footer() {
           <p className="eyebrow mb-6">Index</p>
           <ul className="space-y-2 text-sm">
             {nav.slice(0, 6).map((n) => (
-              <li key={n.to}><Link to={n.to} className="hover:opacity-60">{n.label}</Link></li>
+              <li key={n.to}>
+                <Link to={n.to} className="hover:opacity-60">
+                  {n.label}
+                </Link>
+              </li>
             ))}
           </ul>
         </div>
       </div>
       <div className="border-t border-border">
         <div className="mx-auto flex max-w-[1700px] flex-wrap items-center justify-between gap-4 px-6 py-6 text-xs text-graphite md:px-12">
-          <p>© {new Date().getFullYear()} {site.name}. A private dermatology clinic.</p>
+          <p>
+            © {new Date().getFullYear()} {site.name}. A private dermatology clinic.
+          </p>
           <div className="flex gap-6">
-            <Link to="/privacy" className="hover:text-ink">Privacy</Link>
-            <Link to="/terms" className="hover:text-ink">Terms</Link>
-            <Link to="/careers" className="hover:text-ink">Careers</Link>
+            <Link to="/privacy" className="hover:text-ink">
+              Privacy
+            </Link>
+            <Link to="/terms" className="hover:text-ink">
+              Terms
+            </Link>
+            <Link to="/careers" className="hover:text-ink">
+              Careers
+            </Link>
           </div>
         </div>
       </div>

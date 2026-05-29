@@ -149,7 +149,7 @@ export function HeroCTA() {
   return (
     <Link
       to="/book"
-      className="group inline-flex items-center gap-6 rounded-full border border-accent/80 bg-transparent px-8 py-4 text-[11px] uppercase tracking-[0.25em] text-accent transition-all hover:bg-accent hover:text-accent-foreground"
+      className="group inline-flex items-center gap-3 rounded-full bg-accent px-8 py-4 text-[11px] uppercase tracking-[0.25em] text-background transition-all hover:opacity-90 active:scale-95"
     >
       Begin a consultation
       <span className="transition-transform duration-500 group-hover:translate-x-2">→</span>

@@ -35,9 +35,10 @@ export function HomePage() {
             <p className="body-lg">{philosophy.body}</p>
             <Link
               to="/about"
-              className="mt-10 inline-block border-b border-accent pb-1 text-[12px] uppercase tracking-[0.22em] text-accent hover:text-accent-foreground hover:opacity-80"
+              className="mt-10 inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3 text-[12px] uppercase tracking-[0.22em] text-background transition-all hover:opacity-90 active:scale-95"
             >
-              The clinic →
+              The clinic
+              <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
             </Link>
           </FadeIn>
         </div>
@@ -94,9 +95,10 @@ export function HomePage() {
 
             <Link
               to="/doctors"
-              className="mt-12 inline-block border-b border-ink pb-1 text-[12px] uppercase tracking-[0.22em] hover:opacity-60"
+              className="mt-12 inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3 text-[12px] uppercase tracking-[0.22em] text-background transition-all hover:opacity-90 active:scale-95"
             >
-              The Specialists →
+              The Specialists
+              <span className="transition-transform duration-300 hover:translate-x-1">→</span>
             </Link>
           </div>
         </div>

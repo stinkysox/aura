@@ -26,7 +26,7 @@ export function ContactPage() {
               <Field label="Your name" />
               <Field label="Email" type="email" />
               <Field label="A short note" textarea />
-              <button className="border-b border-ink pb-1 text-[12px] uppercase tracking-[0.22em] hover:opacity-60">
+              <button className="inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3 text-[12px] uppercase tracking-[0.22em] text-background transition-all hover:opacity-90 active:scale-95">
                 Send a quiet message →
               </button>
             </form>
@@ -63,4 +63,3 @@ function Field({
     </label>
   );
 }
-

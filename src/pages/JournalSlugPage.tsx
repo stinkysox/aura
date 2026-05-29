@@ -50,7 +50,7 @@ export function JournalSlugPage() {
       <Section>
         <Link
           to="/journal/"
-          className="border-b border-ink pb-1 text-[12px] uppercase tracking-[0.22em]"
+          className="inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3 text-[12px] uppercase tracking-[0.22em] text-background transition-all hover:opacity-90 active:scale-95"
         >
           ← Return to journal
         </Link>
@@ -58,4 +58,3 @@ export function JournalSlugPage() {
     </article>
   );
 }
-
