@@ -90,7 +90,7 @@ export function CinematicHero() {
             <span className="eyebrow mb-8 block opacity-70">
               AURA Skin and Hair Clinic · Udaipur
             </span>
-            <h1 className="max-w-full text-5xl font-light tracking-tight md:text-7xl lg:text-[7rem] xl:text-[8.5rem] 2xl:text-[10rem] whitespace-nowrap">
+            <h1 className="max-w-full text-5xl font-light tracking-tight md:text-7xl lg:text-[6rem] xl:text-[7rem] 2xl:text-[7.5rem] whitespace-nowrap">
               <Lines lines={["The slow art", "of skin and hair."]} />
             </h1>
             <div className="mt-12 grid grid-cols-1 gap-10 md:grid-cols-12">
