@@ -34,7 +34,6 @@ export function Nav() {
             <span className="truncate font-serif text-xl tracking-tight sm:text-2xl">
               {site.name}
             </span>
-            <span className="eyebrow hidden 2xl:inline truncate opacity-70">— {site.tagline}</span>
           </Link>
 
           <nav className="hidden items-center gap-8 lg:flex xl:gap-10">
